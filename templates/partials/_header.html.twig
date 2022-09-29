@@ -1,0 +1,66 @@
+<div class="header-top">
+    <div class="container header-top-info">
+        <span class="header-top-cord mr-15"><i class='bx bx-map-alt mr-5'></i>22 les roches, 85510 Le Boupere</span>
+        <span class="header-top-cord mr-15"><i class='bx bxs-phone mr-5' ></i>06 69 33 61 65</span>
+        <span class="header-top-cord mr-15"><i class='bx bx-mail-send mr-5'></i>4pattesdespoilset1coeur@gmail.com</span>
+    </div>
+</div>
+
+<header class="header">
+    <nav class="header-nav">
+        {# Menu burger #}
+        <div class="menu-burger-open">
+            <span>Afficher le menu</span>
+        </div>
+
+        {# Logo #}
+        <a href="{{ path('app_home') }}" class="header-logo">
+            <img src="{{ asset('/build/images/logo.svg') }}" alt="4 Pattes Des Poils Et 1 Coeurs">
+        </a>
+
+        {# Menu #}
+        <div class="menu-overlay"></div>
+        <div class="nav-links">
+            <div class="nav-links-actions">
+                <a href="#" class="header-logo">
+                    <img src="{{ asset('/build/images/logo.svg') }}" alt="4 Pattes Des Poils Et 1 Coeurs">
+                </a>
+                <div class="menu-burger-close">
+                    <img src="{{ asset('/build/images/icon/close.svg') }}" alt="Fermer le menu">
+                </div>
+            </div>
+            <ul class="menu">
+                <li class="menu-item"><a href="#accueil">Accueil</a></li>
+                <li class="menu-item">
+                    <a href="#" data-toggle="dropdown-toggle" role="button">L'association</a>
+                    <i class='bx bx-chevron-down icon'></i>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="#qui-sommes-nous">Qui sommes-nous ?</a></li>
+                        <li class="dropdown-item"><a href="#partenaires">Les partenaires</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#" data-toggle="dropdown-toggle" role="button">Adoption</a>
+                    <i class='bx bx-chevron-down icon'></i>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="#adoptions">A l'adoption</a></li>
+                        <li class="dropdown-item"><a href="#conditions-adoption">Les conditions d'adoption</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="#maltraitance">Mailtraitance</a></li>
+                <li class="menu-item"><a href="#actualités">Actualités</a></li>
+                <li class="menu-item">
+                    <a href="#" data-toggle="dropdown-toggle" role="button">Conseils</a>
+                    <i class='bx bx-chevron-down icon'></i>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="#soins-animal">Soins de l'animal</a></li>
+                        <li class="dropdown-item"><a href="#sterilisation">Stérilisation</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        {# Button Nous soutenir #}
+        <a href="#nous-soutenir" class="btn btn-primary rounded-full">Nous soutenir</a>
+    </nav>
+</header>

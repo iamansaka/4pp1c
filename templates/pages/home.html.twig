@@ -2,6 +2,57 @@
 
 {% block title %}Association de Protection Animale - {{ parent() }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Hello</h1>
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Ouvrez votre coeur et votre maison à votre <strong>compagnon pour la vie. <img src="{{asset('/build/images/underline.svg')}}" alt="souligné"></strong>
+                </h1>
+                <div class="hero-text">Bienvenue sur notre site internet, vous y trouverez toutes nos loulous à l'adoption,, notre histoire, nos articles, nos conseils et de nombreux resignement sur les animaux.</div>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/track-cat.svg')}}" class="icon" alt="icon empreinte pattes animaux">Découvrir les animaux</a>
+                    <a href="#" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/donate.svg')}}" class="icon" alt="icon don">Faire un don</a>
+                    <a href="#" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/letter-contact.svg')}}" class="icon" alt="icon mail">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="figures rounded">
+            <img class="cat cat-1" src="{{asset('/build/images/cat_1.svg')}}" alt="Chat">
+            <img class="cat cat-2" src="{{asset('/build/images/cat_2.svg')}}" alt="Chat">
+            <div class="figures-body d-flex flex-row-wrap">
+                <div class="figures-icon">
+                    <img src="https://api.iconify.design/twemoji/cat-face.svg?width=48&height=48" alt="chat">
+                </div>
+                <div class="figures-content d-flex flex-column">
+                    <h2 class="figures-title">L'adoption</h2>
+                    <p class="figures-description">Vous souhaitez adopter un ou plusieurs chats de notre pensionnaires ? Ils sont nombreux à vous attendre.</p>
+                </div>
+            </div>
+            <div class="figures-body d-flex flex-row-wrap">
+                <div class="figures-icon">
+                    <img src="https://api.iconify.design/fa6-solid/hand-holding-heart.svg?width=48&height=48" alt="chat">
+                </div>
+                <div class="figures-content d-flex flex-column">
+                    <h2 class="figures-title">Don</h2>
+                    <p class="figures-description">C'est grâce à votre générosité que l'on peut continuer d'exister</p>
+                </div>
+            </div>
+            <div class="figures-body d-flex flex-row-wrap">
+                <div class="figures-icon">
+                    <img src="https://api.iconify.design/fa/paw.svg?width=48&height=48" alt="chat">
+                </div>
+                <div class="figures-content d-flex flex-column">
+                    <h2 class="figures-title">L'adoption</h2>
+                    <p class="figures-description">Vous pensez pouvoir accueillir un ou plusieurs chats ? Contactez nous !</p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

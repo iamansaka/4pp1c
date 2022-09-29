@@ -1,0 +1,43 @@
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="{{ path('app_home') }}" class="footer-logo">
+                    <img src="{{ asset('/build/images/logo.svg') }}" alt="4 Pattes Des Poils Et 1 Coeurs">
+                </a>
+                <h4 class="footer-title">4 Pattes Des Poils Et 1 Coeur</h4>
+            </div>
+            <p class="footer-description">Association pour la protection des animaux au Boupère ayant pour but de venir en aide aux animaux abandonnées, en vue de leur réinsertion.</p>
+            <div class="footer-social">
+                <a href="#facebook" class="wd-social rounded-full"><i class='bx bxl-facebook' ></i></a>
+            </div>
+        </div>
+        <div class="footer-col d-flex flex-column">
+            <h4 class="footer-title">Contact</h4>
+            <a href="mailto:4pattesdespoilset1coeur@gmail.com" class="footer-item mb-5">4pattesdespoilset1coeur@gmail.com</a>
+            <a href="tel:+336 69 33 61 65" class="footer-item">06 69 33 61 65</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Adresse</h4>
+            <address class="footer-item"><i class='bx bx-map-alt mr-5'></i>22 Les roches - 85510 Le Boupére</address>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">Liens utiles</h4>
+            <ul class="footer-item footer-menu" role="navigation">
+                <li><a class="d-flex align-items-center flex-row-nowrap" href="{{ path('app_home') }}"><i class='bx bx-link mr-10'></i>Accueil</a></li>
+                <li><a class="d-flex align-items-center flex-row-nowrap" href="#partenaires"><i class='bx bx-link mr-10'></i>Partenaires</a></li>
+                <li><a class="d-flex align-items-center flex-row-nowrap" href="#contact"><i class='bx bx-link mr-10'></i>Contact</a></li>
+                <li><a class="d-flex align-items-center flex-row-nowrap" href="#L'association"><i class='bx bx-link mr-10'></i>L'association</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <small>© {{ 'now'|date('Y') }} Association - 4 Pattes Des Poils Et 1 Coeur</small>
+        <small>
+            <ul class="footer-links">
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">Politique de cookies</a></li>
+            </ul>
+        </small>
+    </div>
+</footer>
