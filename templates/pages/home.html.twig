@@ -7,6 +7,11 @@
     {{ encore_entry_link_tags('home') }}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}
+
 {% block body %}
     <section id="hero">
         <div class="container">
@@ -55,4 +60,22 @@
             </div>
         </div>
     </div>
+    <section id="testimonials">
+        <div class="container">
+            <div class="w-5">
+                <h2 class="heading-title">Témoignages</h2>
+                <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hic nihil fuit, quod quaereremus. Praeclare hoc quidem. Hoc Hieronymus summum bonum esse dixit.</p>
+            </div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for testimonial in testimonials %}
+                        <div class="swiper-slide">
+                            {% include "components/_testimonials.html.twig" with { name: testimonial.name, content: testimonial.content, note: testimonial.rating, anonyme: testimonial.anonyme } %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-custom-pagination"></div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

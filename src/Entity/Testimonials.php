@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\TestimonialsRepository;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+#[ORM\Entity(repositoryClass: TestimonialsRepository::class)]
+class Testimonials
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner votre nom')]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner votre email')]
+    private ?string $email = null;
+
+    #[ORM\Column]
+    #[Assert\NotBlank(message: 'Veuillez renseigner une note')]
+    private ?int $rating = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez renseigner un contenue')]
+    private ?string $content = null;
+
+    #[ORM\Column]
+    private ?bool $anonyme = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(int $rating): self
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function isAnonyme(): ?bool
+    {
+        return $this->anonyme;
+    }
+
+    public function setAnonyme(bool $anonyme): self
+    {
+        $this->anonyme = $anonyme;
+
+        return $this;
+    }
+}

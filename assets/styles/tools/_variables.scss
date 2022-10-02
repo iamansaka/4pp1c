@@ -1,10 +1,12 @@
 :root {
   --primary: #ea3659;
+  --primary-20: rgba(234, 54, 89, 0.2);
   --white: #ffffff;
   --dark: #111111;
   -ms-grid-layer: #272727;
   --whitesmoke: #fafbff;
   --blue-dark: #273a5a;
+  --bluesmoke: #e3edff;
 
   --text-white: #fff;
 
@@ -14,11 +16,14 @@
   --border-radius-full: 1000px;
 
   --font-family: "Poppins", sans-serif;
+
   --font-size-small: 13px;
   --font-size-regular: 15px;
   --font-size-medium: 22px;
   --font-size-large: 32px;
   --font-size-xl: 50px;
+  --font-heading: 44px;
+
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semi-bold: 600;

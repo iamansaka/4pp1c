@@ -5,6 +5,7 @@
 @import "tools/media_queries";
 @import "tools/variables";
 @import "tools/base";
+@import "tools/typography";
 @import "tools/utils";
 
 // Layouts
@@ -15,6 +16,9 @@
 // Components
 // ==================
 @import "./components/button";
+@import "./components/form";
+@import "./components/pagination";
+@import "./components/testimonials";
 
 // Pages
 // ==================

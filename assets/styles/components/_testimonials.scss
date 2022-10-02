@@ -1,0 +1,39 @@
+// Testimonials
+// =========================================
+.testimonials {
+  max-width: 100%;
+  min-width: 373px;
+  width: 100%;
+  height: 265px;
+  display: grid;
+  grid-template-areas:
+    "avatar meta"
+    "content content";
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-row-gap: 20px;
+  grid-column-gap: 15px;
+  background-color: #f0f5ff;
+  padding: 35px 30px;
+}
+
+.testimonials-avatar {
+  grid-area: "avatar";
+}
+
+.testimonials-meta {
+  grid-area: "meta";
+}
+
+.testimonials-rating {
+  min-width: 90px;
+  width: 108px;
+  height: 20px;
+}
+
+.testimonials-content {
+  grid-area: "content";
+  grid-column: 1 / span 2;
+  white-space: pre-wrap;
+  font-size: var(--font-size-small);
+}
