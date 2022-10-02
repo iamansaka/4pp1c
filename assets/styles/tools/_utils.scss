@@ -1,5 +1,5 @@
 // Marge
-// ==================
+// =========================================
 .mr-auto {
   margin-right: auto;
 }
@@ -59,8 +59,15 @@
   }
 }
 
+.my {
+  &-10 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}
+
 // Padding
-// ==================
+// =========================================
 .p {
   &-5 {
     padding: 5px;
@@ -130,15 +137,21 @@
 }
 
 // Border radius
-// ==================
+// =========================================
 .rounded {
   border-radius: var(--border-radius);
+
+  &-10 {
+    border-radius: 10px;
+  }
 
   &-full {
     border-radius: var(--border-radius-full);
   }
 }
 
+// Flex
+// =========================================
 .d-flex {
   display: flex;
 }
@@ -159,6 +172,10 @@
   align-items: center;
 }
 
+.align-items-start {
+  align-items: flex-start;
+}
+
 .align-items-end {
   align-items: flex-end;
 }
@@ -177,4 +194,24 @@
 
 .flex-fill {
   flex: 1;
+}
+
+// Wid
+// =========================================
+.w {
+  &-4 {
+    max-width: 40%;
+    width: 100%;
+    @include sm {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  &-5 {
+    max-width: 100%;
+    width: calc(100% / 2);
+    @include sm {
+      width: 100%;
+    }
+  }
 }

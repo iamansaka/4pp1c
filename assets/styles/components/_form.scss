@@ -1,0 +1,39 @@
+.form-element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  label {
+    margin-bottom: 5px;
+    font-weight: var(--font-weight-semi-bold);
+  }
+
+  input,
+  textarea {
+    background-color: var(--white);
+  }
+}
+
+.form-errors {
+  color: var(--warning);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semi-bold);
+}
+
+input,
+textarea {
+  background-color: #eff7ff;
+  outline: none;
+  padding: 10px 15px;
+  border: none;
+  font-family: var(--font-family);
+}
+
+.form-element textarea {
+  min-height: 200px;
+}
+
+.form-errors {
+  margin: 8px 0;
+  color: red;
+}

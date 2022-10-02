@@ -1,0 +1,39 @@
+@use "../tools/media_queries" as *;
+
+.broadly {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+.broadly-testimonials {
+  width: 475px;
+
+  .testimonials {
+    height: 100%;
+    background-color: transparent;
+    padding-block: 15px;
+    padding-inline: 0;
+  }
+
+  .pagination {
+    margin-top: 25px;
+    @include sm {
+      margin-top: 15px;
+    }
+  }
+}
+
+.stars {
+  font-size: 30px;
+  margin-bottom: 15px;
+
+  i {
+    cursor: pointer;
+  }
+}
+
+.gold {
+  color: gold;
+}

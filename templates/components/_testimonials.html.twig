@@ -1,0 +1,10 @@
+<div class="testimonials rounded">
+    <img src="{{ asset('build/images/default.png') }}" alt="" class="testimonials-avatar rounded-full">
+    <div class="testimonial-meta">
+        <div class="testimonials-author">{{ name }}</div>
+        <div class="testimonials-action">
+            <img src="{{ asset("build/images/stars/stars-"~ note ~".svg") }}" alt="Noté {{ note }} sur 5 étoiles" class="testimonials-rating">
+        </div>
+    </div>
+    <p class="testimonials-content">{{ content }}</p>
+</div>
