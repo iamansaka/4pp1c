@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   menu.addEventListener("click", (event) => {
-    console.log(event.target.hasAttribute("data-toggle"));
     if (event.target.hasAttribute("data-toggle") && window.innerWidth <= 1024) {
       event.preventDefault();
       const dropdown = event.target.parentElement;

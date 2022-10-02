@@ -19,6 +19,7 @@
         {% endblock %}
     </head>
     <body class="d-flex flex-column">
+        {{ include('partials/_notification.html.twig') }}
         {% include "partials/_header.html.twig" %}
         <main class="homepage flex-fill" role="main">
             {% block body %}{% endblock %}

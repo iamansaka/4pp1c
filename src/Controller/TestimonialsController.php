@@ -21,7 +21,7 @@ class TestimonialsController extends AbstractController
      * @param TestimonialsRepository $testimonialsRepository
      * @return Response
      */
-    #[Route('/testimonials', name: 'app_testimonials')]
+    #[Route('/testimonials', name: 'app_testimonials', methods: ['GET', 'POST'])]
     public function index(Request $request, TestimonialsRepository $testimonialsRepository, PaginatorInterface $paginator, EntityManagerInterface $em): Response
     {
         $testimonialsData = $paginator->paginate(
@@ -40,6 +40,7 @@ class TestimonialsController extends AbstractController
             $em->persist($testimonials);
             $em->flush();
 
+            $this->addFlash("success", 'Votre témoignage a bien été prise en compte !');
             return $this->redirectToRoute('app_home');
         }
 
