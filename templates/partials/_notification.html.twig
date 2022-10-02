@@ -1,0 +1,22 @@
+{% for cat, list in app.flashes %}
+    {% for message in list %}
+        <div class="notification show" data-type="{{ cat }}" role="alert">
+            <div class="notification-type">
+                <i class='bx bxs-check-shield'></i> 
+            </div>
+            <div class="notification-message">
+                {% if (cat == 'success') %}
+                    <span class="title">Yay ! Tout a fonctionné</span>  
+                {% elseif (cat == 'error') %}
+                    <span class="title">Oh oh, quelque chose a mal tourné</span>  
+                {% else %}
+                    <span class="title">Le saviez-vous ?</span>  
+                {% endif %}
+                <span class="description">{{ message }}</span>
+            </div>
+            <div class="notification-close">
+                <i class='bx bx-x'></i> 
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}

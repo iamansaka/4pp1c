@@ -27,5 +27,3 @@ const swiper = new Swiper(".swiper-container", {
   },
   modules: [Pagination],
 });
-
-console.log("Hello Homepage");
