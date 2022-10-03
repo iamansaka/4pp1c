@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "layout/layout_base.html.twig" %}
 
 {% block title %}Association de Protection Animale - {{ parent() }}{% endblock %}
 
@@ -12,7 +12,7 @@
     {{ encore_entry_script_tags('home') }}
 {% endblock %}
 
-{% block body %}
+{% block content %}
     <section id="hero">
         <div class="container">
             <div class="hero-content">
@@ -59,6 +59,19 @@
                 </div>
             </div>
         </div>
+        <section class="heading">
+            <div class="heading-img">
+                <img src="{{ asset('build/images/association.jpg') }}" alt="L'association">
+            </div>
+            <div class="heading-content">
+                <div class="heading-title">4 pattes des poils et 1 coeur</div>
+                <p>
+                    4 Pattes des poils et 1 coeur  est 1 coeur est un refuge pour les chats et chatons abandonnés, maltraités, sans famille.<br/><br/>
+                    Quam si explicavisset, non tam haesitaret. Tria genera bonorum; Quid igitur, inquit, eos responsuros putas? Sed quot homines, tot sententiae; Hoc est non dividere, sed frangere.<br/><br/>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hic nihil fuit, quod quaereremus. Praeclare hoc quidem. Hoc Hieronymus summum bonum esse dixit. Tum Quintus: Est plane, Piso, ut dicis, inquit. Cur id non ita fit?
+                </p>
+            </div>
+        </section>
     </div>
     <section id="testimonials">
         <div class="container">

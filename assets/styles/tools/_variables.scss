@@ -1,6 +1,6 @@
 :root {
   --primary: #ea3659;
-  --primary-20: rgba(234, 54, 89, 0.2);
+  --primary-light: rgba(234, 54, 89, 0.2);
   --white: #ffffff;
   --dark: #111111;
   -ms-grid-layer: #272727;
@@ -38,6 +38,6 @@
 
   --max-width: 1200px;
   @include lg {
-    --max-width: 1300px;
+    --max-width: 1140px;
   }
 }

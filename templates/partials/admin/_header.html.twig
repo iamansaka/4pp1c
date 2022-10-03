@@ -1,0 +1,58 @@
+<div class="menu">
+    <nav class="navbar-top">
+        <div class="container">
+            <div class="navbar-top-content">
+                <a href="{{ path('admin_dashboard') }}" class="navbar-logo">
+                    <img src="{{ asset('/build/images/logo.svg') }}" alt="4 Pattes Des Poils Et 1 Coeurs">
+                </a>
+                <div id="nav-search" class="navbar-search">
+                    <i class="fa-solid fa-magnifying-glass mr-5"></i>
+                    <input type="text" name="search" placeholder="Rechercher n'importe quoi...">
+                </div>
+                <div class="logout"><i class="fa-solid fa-arrow-right-from-bracket mr-10"></i></i>Déconnexion</div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar-bottom">
+        <div class="container">
+            <ul class="nav-list-navigation">
+                <li class="nav-item">
+                    <a href="{{ path('admin_dashboard') }}">
+                        <i class='bx bxs-dashboard nav-icon'></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="fa-regular fa-newspaper"></i>
+                        <span>Articles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="fa-regular fa-clipboard nav-icon"></i>
+                        <span>Adoptions</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="fa-solid fa-paw nav-icon"></i>
+                        <span>Pets</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class='bx bx-user-pin nav-icon'></i>
+                        <span>Membership</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('admin_testimonials') }}">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Témoignage</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

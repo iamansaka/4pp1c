@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends "layout/layout_base.html.twig" %}
 
 {% block title %}Témoignages | {{ parent() }}{% endblock %}
 
@@ -12,7 +12,7 @@
     {{ encore_entry_script_tags('testimonials') }}
 {% endblock %}
 
-{% block body %}
+{% block content %}
     <div class="container my-10">
         <div class="w-5">
             <h1 class="heading-title">Témoignages</h1>

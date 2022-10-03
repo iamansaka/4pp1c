@@ -26,8 +26,8 @@ class Testimonials extends Fixture
             $testimonial = new EntityTestimonials();
             $testimonial->setName($this->faker->lastName() . ' ' . $this->faker->firstName());
             $testimonial->setEmail($this->faker->lastName() . '@gmail.com');
-            $testimonial->setRating(mt_rand(0, 5));
-            $testimonial->setContent($this->faker->paragraph());
+            $testimonial->setRating(mt_rand(3, 5));
+            $testimonial->setContent($this->faker->text());
             $testimonial->setAnonyme(mt_rand(0, 1));
             $manager->persist($testimonial);
         }
