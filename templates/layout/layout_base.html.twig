@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column">
+        {% include "partials/_header.html.twig" %}
+        <main class="homepage flex-fill" role="main">
+            {% block content %}{% endblock %}
+        </main>
+        {% include "partials/_footer.html.twig" %}
+    </div>
+{% endblock %}

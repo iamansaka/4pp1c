@@ -1,3 +1,9 @@
+// Base
+// ==================
+%section {
+  margin-bottom: 100px;
+}
+
 %container,
 .container {
   max-width: var(--max-width);
@@ -11,8 +17,27 @@
   }
 }
 
+.container-small {
+  @extend %container;
+  max-width: 1000px;
+
+  @include lg {
+    max-width: 1300px;
+  }
+}
+
+// ========= Overflow ========= //
+
 .hidden-y {
   overflow-y: hidden;
+}
+
+.wrapper-scroller {
+  overflow: hidden;
+}
+
+.wrapper-content {
+  padding: 30px 0;
 }
 
 .link-underline {
@@ -30,4 +55,28 @@ img {
 .block {
   background-color: var(--bluesmoke);
   padding: 50px 30px;
+}
+
+// Admin
+// ==================
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+  background-color: var(--white);
+  border: 1px solid #cdd4e0;
+  box-shadow: 0px 4px 4px rgba(228, 237, 244, 0.8);
+
+  .card-content {
+    flex: 1 1 auto;
+    padding: 1.56rem;
+  }
 }

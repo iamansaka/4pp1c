@@ -1,0 +1,27 @@
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+
+  th {
+    text-transform: uppercase;
+    border-top: 0;
+    border-bottom-width: 1px;
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-small);
+    color: #9da2aa;
+    letter-spacing: 0.031rem;
+    padding: 0.312rem 0.937rem;
+  }
+
+  tbody {
+    font-size: var(--font-size-small);
+
+    tr:nth-child(odd) {
+      background-color: #fbfbfb;
+    }
+  }
+}
