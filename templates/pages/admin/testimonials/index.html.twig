@@ -5,6 +5,7 @@
 {% block content %}
     <div class="card">
         <div class="card-content">
+            <h1 class="card-title mb-10">Témoignages</h1>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -26,8 +27,8 @@
                                 <td>{{ testimonial.email }}</td>
                                 <td><img src="{{ asset("build/images/stars/stars-"~ testimonial.rating ~".svg") }}" alt="Noté {{ testimonial.rating }} sur 5 étoiles" class="testimonials-rating"></td>
                                 <td>{{ testimonial.content | slice(0, 50) ~ '...' }}</td>
-                                <td>non valide</td>
-                                <td>Voir / Modifier</td>
+                                <td><small class="status">Non Validé</small></td>
+                                <td><a href="{{ path('admin_testimonials_delete', {id: testimonial.id}) }}">Supprimé</a></td>
                             </tr>
 
                         {% endfor %}
