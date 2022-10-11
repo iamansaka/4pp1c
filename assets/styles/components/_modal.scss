@@ -1,0 +1,114 @@
+html:has(dialog.modal[open]) {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  display: grid;
+  max-width: 50ch;
+  max-inline-size: min(90vw, 100%);
+  max-block-size: min(80vh, 100%);
+  background: var(--white);
+  border-radius: var(--border-radius);
+  border: none;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.05);
+  margin: auto;
+  padding: 0;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1005;
+  &::backdrop {
+    background: rgba(10, 10, 10, 0.25);
+    backdrop-filter: blur(1px);
+    transition: backdrop-filter 0.5s ease;
+  }
+  &:not([open]) {
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+.modal-dialog {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: flex-start;
+  max-block-size: 80vh;
+
+  > * {
+    padding: 1rem;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #f3f3f3;
+
+  > * {
+    font-size: 0.95rem;
+  }
+}
+.modal-body {
+  display: grid;
+  justify-items: flex-start;
+  gap: 8px;
+  font-size: 0.9rem;
+  opacity: 0.89;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  max-block-size: 100%;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  background-color: #f2f6fc;
+  @include sm {
+    flex-wrap: wrap;
+    > * {
+      flex: 1 1 0%;
+    }
+  }
+}
+
+.modal-btn {
+  border: none;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0px 1px 2px rgba(15, 23, 42, 0.04);
+  font-weight: var(--font-weight-regular);
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  padding: 0.45rem 1.2rem;
+  cursor: pointer;
+  transition: all 2s ease-in-out;
+  &.primary {
+    color: var(--text-white);
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+}
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  place-items: center;
+  stroke: currentColor;
+  background-color: var(--white);
+  border: 1px solid #dbdbdb;
+  color: #a1acb8;
+  stroke-width: 3px;
+}
+
+.open-button,
+.open-button:focus {
+  border: none;
+  background: transparent;
+}

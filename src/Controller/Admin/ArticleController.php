@@ -83,7 +83,7 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('admin/article/suppression/{id}', name: 'admin_article_delete', methods: ['GET'])]
+    #[Route('admin/article/suppression/{id}', name: 'admin_article_delete', methods: ['GET', 'POST'])]
     public function delete(Article $article, EntityManagerInterface $em): Response
     {
         if (!$article) {
