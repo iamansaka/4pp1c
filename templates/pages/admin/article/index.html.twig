@@ -1,0 +1,68 @@
+{% extends 'layout/layout_admin.html.twig' %}
+
+{% block title %}{{ parent() }} - Articles{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-content">
+            <h1 class="card-title">Liste des articles</h1>
+            <div class="d-flex flex-fill justify-content-end mb-20">
+                <a href="{{ path('admin_article_new') }}" class="btn btn-small btn-primary">Ajouter un article</a>
+            </div>
+            <div class="table-actions my-20">
+                <div class="table-search d-flex align-items-center flex-row-nowrap mr-10">
+                    <i class="fa-solid fa-magnifying-glass mr-5"></i>
+                    <input type="text" class="flex-fill" placeholder="Rechercher un article">
+                </div>
+                <div class="table-query">
+                    <a href="{{ path(articles.route, {'q': 'all'}) }}" class="table-query-link {{ (app.request.query.get('q') is empty or app.request.query.get('q') == 'all') ? 'active' : '' }}">Tout</a>
+                    <a href="{{ path(articles.route, articles.query|merge({('q'): 'published'})) }}" class="table-query-link {{ (app.request.query.get('q') == 'published') ? 'active' : '' }}">Publié</a>
+                    <a href="{{ path(articles.route, articles.query|merge({('q'): 'draft'})) }}" class="table-query-link {{ (app.request.query.get('q') == 'draft') ? 'active' : '' }}">Brouillon</a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Thumbnail</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Catégories</th>
+                            <th scope="col">Date de création</th>
+                            <th scope="col">Date de création</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td>#{{ article.id }}</td>
+                                <td><img src="https://www.dwinawan.com/blog/thumb_article36.jpg" alt=""></td>
+                                <td>{{ article.title|length > 25 ? article.title|slice(0, 25)~'...' : article.title}}</td>
+                                <td class="text-primary">Nouvelles des adoptés</td>
+                                <td>{{ article.createdAt|date('d.m.Y') }}</td>
+                                <td>{{ article.updatedAt|ago(locale='fr') }}</td>
+                                <td><small class="status {{ article.isPublished ? 'published' : 'brouillon' }}">{{ article.isPublished ? 'Publié' : 'Brouillon' }}</small></td>
+                                <td class="action option-trigger">
+                                    <i class="fa-solid fa-ellipsis ellipsis" aria-haspopup="true" aria-controls="dropdown-option-{{ article.id }}"></i>
+                                    <div class="option-list">
+                                        <a href="{{ path('app_article_show', {slug: article.slug}) }}" target="_blank" class="option-list-item"><i class="fa-regular fa-eye option-icon"></i> Afficher</a>
+                                        <a href="{{ path('admin_article_edit', {id: article.id}) }}" class="option-list-item"><i class="fa-regular fa-pen-to-square option-icon"></i> Modifier</a>
+                                        <a href="{{ path('admin_article_delete', {id : article.id})}}" onClick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');" class="option-list-item"><i class="fa-solid fa-trash option-icon"></i> Supprimer</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-row-wrap mt-20">
+                <div class="table-status">Affiche {{ articles.paginatorOptions.defaultLimit }} sur {{ articles.getTotalItemCount }} entrées</div>
+                <div class="navigation">
+                    {{ knp_pagination_render(articles) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

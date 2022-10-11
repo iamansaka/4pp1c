@@ -23,3 +23,15 @@
     </ul>
     {%- endif -%}
 {%- endblock form_errors -%}
+
+{%- block choice_widget_expanded -%}
+    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ 'form-checkbox' }) %}
+    <div {% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+    {%- for child in form -%}
+        <div class="form-check">
+            {{- form_widget(child) -}}
+            {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
+        </div>
+    {%- endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}

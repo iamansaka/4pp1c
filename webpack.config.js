@@ -22,8 +22,11 @@ Encore
    */
   .addEntry("app", "./assets/app.js")
   .addEntry("admin", "./assets/admin.js")
-  .addEntry("home", "./assets/scripts/homepage.js")
-  .addEntry("testimonials", "./assets/scripts/testimonials.js")
+  .addEntry("home", "./assets/scripts/pages/homepage.js")
+  .addEntry("testimonials", "./assets/scripts/pages/testimonials.js")
+  .addEntry("articles", "./assets/scripts/pages/articles.js")
+  // .addEntry("home", "./assets/scripts/pages/homepage.js")
+  // .addEntry("articles", "./assets/scripts/pages/articles.js")
   // .addStyleEntry("home", "./assets/styles/pages/home.scss")
 
   .copyFiles({

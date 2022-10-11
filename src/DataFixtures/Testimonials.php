@@ -29,6 +29,7 @@ class Testimonials extends Fixture
             $testimonial->setRating(mt_rand(3, 5));
             $testimonial->setContent($this->faker->text());
             $testimonial->setAnonyme(mt_rand(0, 1));
+            $testimonial->setIsValid(mt_rand(0, 1));
             $manager->persist($testimonial);
         }
 

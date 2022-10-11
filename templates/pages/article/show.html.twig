@@ -1,0 +1,61 @@
+{% extends 'layout/layout_base.html.twig' %}
+
+{% block title %}Article - {{ parent() }}{% endblock %}
+
+{# {% block meta %}
+    <meta name="description" content="Tous les articles de l'association 4 Pattes des poils et 1 coeur." />
+    <meta property="og:title" content="Article" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ app.request.getUriForPath(image_url_raw(article.image)) }}"/>
+    <meta property="og:created_time" content="{{ article.createdAt | date('c') }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+{% endblock %} #}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('articles') }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="container-small">
+            <div class="article-header mb-50">
+                <div class="article-meta mb-5">
+                    <span>Publié le {{ article.createdAt|date('d M Y') }}</span> - <span>mis à jour le</span> <span>{{ article.updatedAt|date('d M Y') }}</span> - <span>Nouvelles des adoptés</span>
+                </div>
+                <h1 class="article-title mb-10">{{ article.title }}</h1>
+                <h2 class="article-summary">{{ article.summary }}</h2>
+            </div>
+        </div>
+        <div class="article-thumbnail m-auto mb-50">
+            <img src="https://www.dwinawan.com/blog/thumb_article36.jpg" alt="image de l'article">
+        </div>
+        <div class="container-small">
+            <div class="article-action my-20 d-flex align-items-center justify-content-end">
+                <button aria-label="link" class="article-share share-link" data-link="{{absolute_url(article.slug)}}"><i class='bx bx-link'></i> Copier le lien</button>
+                <a aria-label="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{absolute_url(article.slug)|url_encode}}" target="_blank" class="article-share share-facebook tooltip" alt="Partager sur Facebook"><i class='bx bxl-facebook-square' ></i></a>
+            </div>
+            <div class="article-body mb-50">{{ article.content|raw }}</div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts_footer %}
+    {{ parent() }}
+    <script>
+    (function() {
+        const linkCopy = document.querySelector(".share-link");
+
+        linkCopy.addEventListener("click", function (event) {
+        event.preventDefault();
+        const data = event.target;
+
+        navigator.clipboard.writeText(data.dataset.link);
+        linkCopy.innerHTML = "<i class='bx bx-link'></i> Copié !";
+        });
+
+        console.log(linkCopy);
+
+    })()
+    </script>
+{% endblock %}

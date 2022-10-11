@@ -73,6 +73,19 @@
             </div>
         </section>
     </div>
+    <section class="articles">
+        <div class="container">
+            <div class="w-5">
+                <h2 class="heading-title">Actualités</h2>
+                <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hic nihil fuit, quod quaereremus. Praeclare hoc quidem. Hoc Hieronymus summum bonum esse dixit.</p>
+            </div>
+            <div class="articles-list">
+                {% for article in articles %}
+                    <a href="{{ path('app_article_show', {slug: article.slug}) }}" class="article-item">{% include "components/_card_article.html.twig" with { title: article.title, summary: article.summary, date: article.createdAt } %}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
     <section id="testimonials">
         <div class="container">
             <div class="w-5">

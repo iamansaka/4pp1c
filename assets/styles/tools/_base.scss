@@ -17,13 +17,23 @@
   }
 }
 
-.container-small {
+.container-medium {
   @extend %container;
   max-width: 1000px;
 
   @include lg {
     max-width: 1300px;
   }
+}
+
+.container-small {
+  @extend %container;
+  width: calc(100% - 40px) !important;
+  max-width: 700px !important;
+}
+
+.homepage {
+  min-height: calc(100vh - 464px);
 }
 
 // ========= Overflow ========= //
@@ -37,6 +47,7 @@
 }
 
 .wrapper-content {
+  min-height: calc(100vh - 133px);
   padding: 30px 0;
 }
 

@@ -1,0 +1,35 @@
+//// Info-bulles
+//// ====================================
+.tooltip {
+  position: relative;
+  &:hover::before,
+  &:hover::after {
+    display: block;
+  }
+  &::before {
+    display: none;
+    position: absolute;
+    content: attr(alt);
+    font-size: 11px;
+    width: 150px;
+    bottom: 125%;
+    transform: translateX(50%);
+    right: 50%;
+    background-color: var(--dark);
+    color: var(--text-white);
+    text-align: center;
+    padding: 5px 0;
+    z-index: 1;
+  }
+  &::after {
+    display: none;
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--dark) transparent transparent transparent;
+  }
+}

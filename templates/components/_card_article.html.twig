@@ -1,0 +1,10 @@
+<article class="card-article">
+    <div class="card-article-thumbnail">
+        <img src="https://www.dwinawan.com/blog/thumb_article36.jpg" alt="{{ title }}">
+    </div>
+    <div class="card-article-body">
+        <div class="card-article-meta">Catégorie<span class="ml-5">{{ date|date('d M Y', "Europe/Paris") }}</span></div>
+        <h3 class="card-article-title">{{ title|length > 90 ? title|slice(0, 90)~'...' : title}}</h3>
+        <p class="card-article-content mt-5">{{ summary|length > 90 ? summary|slice(0, 90)~'...' : summary}}</p>
+    </div>
+</article>

@@ -1,0 +1,60 @@
+// Pages Actualités
+//// ====================================
+.article-search {
+  background-color: #d9e5fc;
+  padding: 1.125rem;
+  color: var(--dark);
+  input {
+    outline: 0;
+    border: none;
+    background-color: transparent;
+    &::placeholder {
+      opacity: 0.7;
+    }
+  }
+}
+
+.article-header {
+  text-align: center;
+}
+.article-title {
+  font-size: 2.25rem;
+  font-weight: var(--font-weight-semi-bold);
+  line-height: 1.2;
+}
+.article-summary {
+  opacity: 0.8;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+}
+.article-meta {
+  font-size: 0.875rem;
+  margin-top: 1.5rem;
+  span:last-child {
+    color: var(--primary);
+  }
+}
+.article-thumbnail {
+  width: 850px;
+  overflow: hidden;
+  border-radius: 5px;
+  img {
+    width: 100%;
+    vertical-align: middle;
+  }
+}
+.article-body {
+  white-space: pre-wrap;
+}
+
+.article-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dfe0e4;
+  background-color: transparent;
+  padding: 0.7rem;
+  vertical-align: middle;
+  margin-left: 8px;
+  cursor: pointer;
+}
