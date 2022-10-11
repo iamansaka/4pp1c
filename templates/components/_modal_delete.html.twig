@@ -1,0 +1,23 @@
+<dialog class="modal" modal-mode="mega" id="dialog-{{ id }}" role="dialog">
+    <div class="modal-background"></div>
+    <form action="{{ path('admin_article_delete', {'id': id}) }}" method="post">
+        <div class="modal-dialog">
+            {# <header class="modal-header">
+                <h3>Titre modal</h3>
+                <button type="button" class="modal-close rounded-full" aria-label="close modal" title="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </header> #}
+            <article class="modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer cet article {{ id }} ?</p>
+            </article>
+            <footer class="modal-footer">
+                <button class="modal-btn rounded-5" type="reset" data-dismiss="dialog" autofocus>Annuler</button>
+                <button class="modal-btn rounded-5 primary" type="submit">Supprimer</button>
+            </footer>
+        </div>
+    </form>
+</dialog>
