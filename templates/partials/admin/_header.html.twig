@@ -9,7 +9,10 @@
                     <i class="fa-solid fa-magnifying-glass mr-5"></i>
                     <input type="text" name="search" placeholder="Rechercher n'importe quoi...">
                 </div>
-                <div class="logout"><i class="fa-solid fa-arrow-right-from-bracket mr-10"></i></i>Déconnexion</div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="logout mr-5"><i class="fa-solid fa-arrow-right-from-bracket mr-10"></i></i>Déconnexion</div>
+                    <a href="{{ path('app_home') }}" class="back-website">Revenir sur le site</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -23,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ path('admin_article') }}">
                         <i class="fa-regular fa-newspaper"></i>
                         <span>Articles</span>
                     </a>

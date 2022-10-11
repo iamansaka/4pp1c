@@ -15,15 +15,24 @@ class TestimonialsType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'label' => 'Mon témoignage*',
+                'attr' => [
+                    'class' => 'form-field'
+                ],
+                'label' => 'Mon témoignage',
                 'required' => false
             ])
             ->add('name', null, [
-                'label' => 'Mon nom*',
+                'attr' => [
+                    'class' => 'form-field'
+                ],
+                'label' => 'Mon nom',
                 'required' => false
             ])
             ->add('email', null, [
-                'label' => 'Mon adresse email*',
+                'attr' => [
+                    'class' => 'form-field'
+                ],
+                'label' => 'Mon adresse email',
                 'required' => false
             ])
             ->add('rating', HiddenType::class, [

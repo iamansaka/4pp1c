@@ -1,0 +1,35 @@
+{% extends 'layout/layout_base.html.twig' %}
+
+{% block title %}Actualités - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('articles') }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center w-5 m-auto text-center mb-50">
+            <h1 class="heading-title">Actualités</h1>
+            <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus ultrices vestibulum praesent. Ut turpis eget dictum in mauris amet.</p>
+            <div class="article-search d-flex align-items-center flex-fill">
+                <i class="fa-solid fa-magnifying-glass mr-5"></i>
+                <input type="text" class="flex-fill" name="search" placeholder="Rechercher un article...">
+            </div>
+        </div>
+        {% if not articles.items is same as([]) %}
+            <div class="articles-list">
+                {% for article in articles %}
+                    <a href="{{ path('app_article_show', {slug: article.slug}) }}" class="article-item">{% include "components/_card_article.html.twig" with { title: article.title, summary: article.summary, date: article.createdAt } %}</a>
+                {% endfor %}
+            </div>
+            <div class="d-flex align-items-center justify-content-center my-50">
+                <div class="navigation">
+                    {{ knp_pagination_render(articles) }}
+                </div>
+            </div>
+        {% else %}
+            <h4>Il n'y a pas d'articles</h4>
+        {% endif %}
+    </div>
+{% endblock %}

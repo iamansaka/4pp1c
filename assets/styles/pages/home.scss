@@ -1,11 +1,10 @@
+// Pages d'Accueil
+//// ====================================
+
 @use "../tools/media_queries" as *;
 
-//// Hero
-//// ==================
-// .homepage {
-//   background-color: gray;
-// }
-
+//// Introduction
+//// ====================================
 #hero {
   background: linear-gradient(0deg, rgba(68, 5, 26, 0.58), rgba(68, 5, 26, 0.58)),
     url(../../images/cat.png) no-repeat;
@@ -64,8 +63,53 @@
   // }
 }
 
+//// Étapes
+//// ====================================
+.figures {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 42px 45px;
+  margin-top: -5%;
+  margin-bottom: 100px;
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  @include sm {
+    margin-top: -17%;
+    padding: 35px 30px;
+  }
+}
+
+.figures-body {
+  width: calc((100% / 3) - 30px);
+
+  @include sm {
+    width: 100%;
+  }
+}
+
+.cat {
+  display: none;
+  position: absolute;
+  width: 434px;
+  right: 0;
+  // bottom: calc(100% / 1.82);
+  bottom: calc(100% / 1.74);
+
+  @include lg {
+    display: initial;
+    &-1 {
+      right: 23%;
+    }
+    &-2 {
+      bottom: calc(100% / 1.4);
+    }
+  }
+}
+
 //// Association
-//// ==================
+//// ====================================
 .heading {
   display: flex;
   flex-flow: row nowrap;
@@ -119,51 +163,28 @@
   }
 }
 
-//// Figures étapes
-//// ==================
-.figures {
+//// Actualités
+//// ====================================
+.articles {
   position: relative;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  padding: 42px 45px;
-  margin-top: -5%;
   margin-bottom: 100px;
-  background-color: var(--white);
-  box-shadow: var(--box-shadow);
-  @include sm {
-    margin-top: -17%;
-    padding: 35px 30px;
+  padding: 3rem 0;
+  background-color: var(--primary-8);
+  &:before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    top: 21%;
+    right: 14%;
+    transform: rotate(26deg);
+    background: url("../../images/paw.svg") no-repeat;
+    background-size: contain;
   }
 }
 
-.figures-body {
-  width: calc((100% / 3) - 30px);
-
-  @include sm {
-    width: 100%;
-  }
-}
-
-.cat {
-  display: none;
-  position: absolute;
-  width: 434px;
-  right: 0;
-  // bottom: calc(100% / 1.82);
-  bottom: calc(100% / 1.74);
-
-  @include lg {
-    display: initial;
-    &-1 {
-      right: 23%;
-    }
-    &-2 {
-      bottom: calc(100% / 1.4);
-    }
-  }
-}
-
+//// Témoignages
+//// ====================================
 #testimonials {
   background: left 0 center url("../../images/underline-2.svg") no-repeat;
   margin-bottom: 100px;

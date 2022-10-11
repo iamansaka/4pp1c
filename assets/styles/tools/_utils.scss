@@ -9,6 +9,10 @@
 }
 
 .m {
+  &-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
   &-5 {
     margin: 5px;
   }
@@ -30,6 +34,12 @@
   &-20 {
     margin-top: 20px;
   }
+  &-50 {
+    margin-top: 50px;
+  }
+  @include sm {
+    margin-top: calc(50px / 2);
+  }
 }
 
 .mb {
@@ -41,6 +51,12 @@
   }
   &-20 {
     margin-bottom: 20px;
+  }
+  &-50 {
+    margin-bottom: 50px;
+    @include sm {
+      margin-bottom: calc(50px / 2);
+    }
   }
 }
 
@@ -75,6 +91,18 @@
   &-10 {
     margin-top: 100px;
     margin-bottom: 100px;
+  }
+  &-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &-50 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    @include sm {
+      margin-top: calc(50px / 2);
+      margin-bottom: calc(50px / 2);
+    }
   }
 }
 
@@ -208,7 +236,7 @@
   flex: 1;
 }
 
-// Wid
+// Largeur
 // =========================================
 .w {
   &-4 {
@@ -225,5 +253,16 @@
     @include sm {
       width: 100%;
     }
+  }
+}
+
+// Couleur text
+// =========================================
+.text {
+  &-primary {
+    color: var(--primary);
+  }
+  &-danger {
+    color: var(--danger);
   }
 }

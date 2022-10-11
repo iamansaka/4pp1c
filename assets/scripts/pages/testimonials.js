@@ -1,6 +1,9 @@
-import "../styles/pages/testimonials.scss";
+import "../../styles/pages/testimonials.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Témoignages
+
+  // Variables
   const allStar = document.querySelectorAll(".bxs-star");
   let note = document.querySelector(".rating");
 

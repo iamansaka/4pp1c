@@ -33,6 +33,9 @@ class Testimonials
     #[ORM\Column]
     private ?bool $anonyme = null;
 
+    #[ORM\Column]
+    private ?bool $isValid = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +97,18 @@ class Testimonials
     public function setAnonyme(bool $anonyme): self
     {
         $this->anonyme = $anonyme;
+
+        return $this;
+    }
+
+    public function isIsValid(): ?bool
+    {
+        return $this->isValid;
+    }
+
+    public function setIsValid(bool $isValid): self
+    {
+        $this->isValid = $isValid;
 
         return $this;
     }

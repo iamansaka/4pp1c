@@ -1,3 +1,5 @@
+// Pages Témoignages
+//// ====================================
 @use "../tools/media_queries" as *;
 
 .broadly {
@@ -36,4 +38,12 @@
 
 .gold {
   color: gold;
+}
+
+label {
+  color: var(--blue-dark);
+  &::after {
+    content: "*";
+    color: var(--danger);
+  }
 }
