@@ -42,6 +42,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function findAllWithPublished()
     {
         return $this->createQueryBuilder('q')
+            ->where('q.isPublished = 1')
             ->orderBy('q.id', 'DESC')
             ->getQuery()
             ->getResult();
