@@ -73,6 +73,7 @@
             </div>
         </section>
     </div>
+    {% if not articles is same as([]) %}
     <section class="articles">
         <div class="container">
             <div class="w-5">
@@ -86,6 +87,8 @@
             </div>
         </div>
     </section>
+    {% endif %}
+    {% if not testimonials is same as([]) %}
     <section id="testimonials">
         <div class="container">
             <div class="w-5">
@@ -104,4 +107,5 @@
             </div>
         </div>
     </section>
+    {% endif %}
 {% endblock %}

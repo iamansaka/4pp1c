@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
 
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'app_home', methods: ['GET'])]
     public function index(TestimonialsRepository $testimonialsRepository, ArticleRepository $articleRepository): Response
     {
         $testimonials = $testimonialsRepository->findTheLastNine();

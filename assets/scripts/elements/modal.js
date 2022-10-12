@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const buttonModals = document.querySelectorAll(".open-button");
-  const buttonCloseModals = document.querySelector("[data-dismiss=dialog]");
+  const buttonCloseModals = document.querySelectorAll("[data-dismiss='dialog']");
 
+  console.log(buttonCloseModals);
   (buttonModals || []).forEach((el) => {
     el.addEventListener("click", (event) => {
       event.preventDefault();
@@ -9,8 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const modal = document.querySelector(target);
       openModal(modal);
 
-      (buttonCloseModals || []).addEventListener("click", () => {
-        closeModal(modal);
+      (buttonCloseModals || []).forEach((btnClose) => {
+        btnClose.addEventListener("click", () => {
+          closeModal(modal);
+        });
       });
 
       window.addEventListener("keydown", (event) => {
