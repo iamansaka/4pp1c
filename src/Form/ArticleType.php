@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -39,6 +41,16 @@ class ArticleType extends AbstractType
                     'placeholder' => 'Accroche de l\'article'
                 ],
                 'label' => 'Accroche'
+            ])
+            ->add('category', EntityType::class, [
+                'attr' => [
+                    'class' => 'form-field',
+                ],
+                'label' => 'Categorie',
+                'placeholder' => 'Categorie',
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'required' => true
             ])
             ->add('isPublished', ChoiceType::class, [
                 // 'attr' => [
