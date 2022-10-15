@@ -6,6 +6,7 @@ use App\Repository\ArticleRepository;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -16,15 +17,19 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez détailler votre titre')]
+    #[Assert\Length(min: 5, max: 150, minMessage: 'Votre titre doit faire au minimums 5 caractères', maxMessage: 'Votre titre est trop long')]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(message: 'Veuillez détailler votre accroche.')]
     private ?string $summary = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\NotBlank(message: 'Veuillez détailler votre contenu.')]
     private ?string $content = null;
 
     #[ORM\Column]
@@ -38,6 +43,7 @@ class Article
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank(message: 'Veuillez sélectionner une catégorie')]
     private ?Category $category = null;
 
     public function __construct()

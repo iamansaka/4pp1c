@@ -83,7 +83,6 @@ html:has(dialog.modal[open]) {
   font-weight: var(--font-weight-regular);
   text-align: center;
   vertical-align: middle;
-  user-select: none;
   padding: 0.45rem 1.2rem;
   cursor: pointer;
   transition: all 2s ease-in-out;

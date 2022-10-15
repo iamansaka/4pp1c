@@ -37,6 +37,7 @@ class TestimonialsController extends AbstractController
 
         if ($testimonialsForm->isSubmitted() && $testimonialsForm->isValid()) {
             $testimonials->setAnonyme(false);
+            $testimonials->setIsValid(false);
             $em->persist($testimonials);
             $em->flush();
 

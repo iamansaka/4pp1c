@@ -1,0 +1,46 @@
+{% extends 'layout/layout_admin.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block content %}
+<div class="card mb-20">
+    <div class="card-content">
+        <h1 class="card-title mb-5">Ajouter une nouvelle catégorie</h1>
+        <p class="text-small mb-20">Ce nom est utilisé sur les articles</p>
+        {{ form_start(form) }}
+            {{ form_rest(form) }}
+            <button class="btn btn-primary">{{ app.request.attributes.get('_route') == "admin_category" ? 'Ajouter une nouvelle catégorie' : 'Modifier la catégorie' }}</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+<div class="card">
+    <div class="card-content">
+        <h2 class="card-title mb-20">Liste des catégories</h2>
+        <div class="table-responsive">            
+            <table class="table cat">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Nombre d'articles</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for categorie in categories %}
+                        <tr>
+                            <td>#{{ categorie.id }}</td>
+                            <td>{{ categorie.name }}</td>
+                            <td><span class="badge badge-outline rounded-full">{{ categorie.articles|length }}</span></td>
+                            <td>
+                                <a href="{{ path('admin_category_edit', {id: categorie.id}) }}" class="tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
+                                <a href="{{ path('admin_category_delete', {id: categorie.id}) }}" class="tooltip" alt="Supprimer"><span class="icon icon-edit">Supprimer</span></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+               </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
