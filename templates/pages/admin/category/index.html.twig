@@ -15,14 +15,14 @@
 </div>
 <div class="card">
     <div class="card-content">
-        <h2 class="card-title mb-20">Liste des catégories</h2>
+        <h2 class="card-title mb-5">Liste des catégories</h2>
+        <p class="text-danger text-small mb-20">Attention si une catégorie est supprimé elle supprime aussi les articles correspondent à la catégorie !</p>
         <div class="table-responsive">            
             <table class="table cat">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Nombre d'articles</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -31,15 +31,15 @@
                         <tr>
                             <td>#{{ categorie.id }}</td>
                             <td>{{ categorie.name }}</td>
-                            <td><span class="badge badge-outline rounded-full">{{ categorie.articles|length }}</span></td>
                             <td>
-                                <a href="{{ path('admin_category_edit', {id: categorie.id}) }}" class="tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
-                                <a href="{{ path('admin_category_delete', {id: categorie.id}) }}" class="tooltip" alt="Supprimer"><span class="icon icon-edit">Supprimer</span></a>
+                                <a href="{{ path('admin_category_edit', {id: categorie.id}) }}" class="action-icon tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
+                                <a data-modal="#dialog-{{ categorie.id }}" class="action-icon open-button tooltip" alt="Supprimer"><span class="icon icon-delete">Supprimer</span></a>
+                                {% include "components/_modal_delete.html.twig" with {id: categorie.id, path: path('admin_category_delete', {id: categorie.id})} %}
                             </td>
-                        </tr>
+                           </tr>
                     {% endfor %}
                 </tbody>
-               </table>
+            </table>
         </div>
     </div>
 </div>

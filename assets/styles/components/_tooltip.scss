@@ -39,3 +39,6 @@
   width: initial;
   padding: 5px 10px;
 }
+.cat .tooltip::after {
+  bottom: 84%;
+}

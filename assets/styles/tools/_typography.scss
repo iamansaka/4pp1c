@@ -30,4 +30,8 @@
     font-size: var(--font-size-small);
     opacity: 0.85;
   }
+
+  &-danger {
+    color: var(--primary);
+  }
 }

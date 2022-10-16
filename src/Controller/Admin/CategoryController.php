@@ -19,6 +19,8 @@ class CategoryController extends AbstractController
     {
         $edit = $categorie ? true : false;
 
+        // dd($categoryRepo->getCategoryWithArticle());
+
         if (!$edit) {
             if ($request->attributes->get('_route') === "admin_category_edit") {
                 $categorie;
@@ -41,12 +43,12 @@ class CategoryController extends AbstractController
         }
 
         return $this->render('pages/admin/category/index.html.twig', [
-            'categories' => $categoryRepo->findAll(),
+            'categories' => $categoryRepo->getCategoryWithArticle(),
             'form' => $categoryForm->createView(),
         ]);
     }
 
-    #[Route('/admin/category/suppression/{id}', name: 'admin_category_delete', methods: ['GET'])]
+    #[Route('/admin/category/suppression/{id}', name: 'admin_category_delete', methods: ['DELETE', 'POST'])]
     public function delete(Category $id, EntityManagerInterface $em): Response
     {
         if (!$id) {
