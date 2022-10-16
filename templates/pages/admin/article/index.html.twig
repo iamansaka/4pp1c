@@ -51,7 +51,7 @@
                                         <a href="{{ path('admin_article_edit', {id: article.id}) }}" class="option-list-item"><i class="fa-regular fa-pen-to-square option-icon"></i> Modifier</a>
                                         {# <a href="{{ path('admin_article_delete', {id : article.id})}}" onClick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');" class="option-list-item"><i class="fa-solid fa-trash option-icon"></i> Supprimer</a> #}
                                         <button class="option-list-item open-button" data-modal="#dialog-{{ article.id }}"><i class="fa-solid fa-trash option-icon"></i> Supprimer</button>
-                                        {% include "components/_modal_delete.html.twig" with {id: article.id} %}
+                                        {% include "components/_modal_delete.html.twig" with {id: article.id, path: path('admin_article_delete', {'id': article.id})} %}
                                     </div>
                                 </td>
                             </tr>

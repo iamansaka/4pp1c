@@ -21,7 +21,7 @@
         <div class="container-small">
             <div class="article-header mb-50">
                 <div class="article-meta mb-5">
-                    <span>Publié le {{ article.createdAt|date('d M Y') }}</span> - <span>mis à jour le</span> <span>{{ article.updatedAt|date('d M Y') }}</span> - <span>Nouvelles des adoptés</span>
+                    <span>Publié le {{ article.createdAt|date('d M Y') }}</span> - <span>mis à jour le</span> <span>{{ article.updatedAt|date('d M Y') }}</span> - <span>{{ article.category.name }}</span>
                 </div>
                 <h1 class="article-title mb-10">{{ article.title }}</h1>
                 <h2 class="article-summary">{{ article.summary }}</h2>

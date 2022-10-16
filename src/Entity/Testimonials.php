@@ -20,6 +20,7 @@ class Testimonials
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Veuillez renseigner votre email')]
+    #[Assert\Email(message: "L'email {{ value }} n'est pas un email valide.")]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -27,7 +28,8 @@ class Testimonials
     private ?int $rating = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Veuillez renseigner un contenue')]
+    #[Assert\NotBlank(message: 'Veuillez renseigner votre témoignage')]
+    #[Assert\Length(min: 5, max: 200, minMessage: ' Votre témoignage est trop courte', maxMessage: 'Votre témoignage est trop long : 200 caractères')]
     private ?string $content = null;
 
     #[ORM\Column]

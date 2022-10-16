@@ -5,7 +5,7 @@
     {%- if help is not empty -%}
         {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
     {%- endif -%}
-    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ 'form-element' }) %}
+    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ errors|length > 0 ? 'form-element is-invalid' : 'form-element' }) %}
     <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
         {{- form_label(form) -}}
         {{- form_widget(form, widget_attr) -}}

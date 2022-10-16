@@ -33,3 +33,12 @@
     border-color: var(--dark) transparent transparent transparent;
   }
 }
+
+.cat .tooltip::before {
+  max-width: 150px;
+  width: initial;
+  padding: 5px 10px;
+}
+.cat .tooltip::after {
+  bottom: 84%;
+}

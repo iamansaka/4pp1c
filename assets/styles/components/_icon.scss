@@ -1,0 +1,29 @@
+.action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 0;
+  text-indent: -3000px;
+  width: 18px;
+  height: 18px;
+  font-size: var(--font-size-small);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  &.icon-edit {
+    background-image: url("../../images/icon/edit.svg");
+  }
+  &.icon-delete {
+    background-image: url("../../images/icon/shape.svg");
+  }
+
+  &:hover {
+    filter: invert(31%) sepia(80%) saturate(3321%) hue-rotate(330deg) brightness(96%)
+      contrast(92%);
+  }
+}

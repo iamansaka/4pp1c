@@ -3,10 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +26,8 @@ class ArticleType extends AbstractType
                     'class' => 'form-field',
                     'placeholder' => 'Titre de l\'article'
                 ],
-                'label' => 'Titre'
+                'label' => 'Titre',
+                'required' => false
             ])
             ->add('slug', TextType::class, [
                 'attr' => [
@@ -31,14 +35,33 @@ class ArticleType extends AbstractType
                     'placeholder' => 'Url de l\'article'
                 ],
                 'label' => 'Url',
-                'disabled' => true
+                'disabled' => true,
+                'required' => false
+            ])
+            ->add('pictureFile', FileType::class, [
+                'attr' => [
+                    'class' => 'form-field uploaded-area'
+                ],
+                'label' => 'Image à la une',
+                'mapped' => false
             ])
             ->add('summary', TextType::class, [
                 'attr' => [
                     'class' => 'form-field',
                     'placeholder' => 'Accroche de l\'article'
                 ],
-                'label' => 'Accroche'
+                'label' => 'Accroche',
+                'required' => false
+            ])
+            ->add('category', EntityType::class, [
+                'attr' => [
+                    'class' => 'form-select',
+                ],
+                'label' => 'Categorie',
+                'placeholder' => 'Categorie...',
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'required' => false
             ])
             ->add('isPublished', ChoiceType::class, [
                 // 'attr' => [
@@ -53,14 +76,15 @@ class ArticleType extends AbstractType
                     return ['class' => 'form-check-input'];
                 },
                 'data' => false,
-                'label' => 'Status de l\'article'
+                'label' => 'Status de l\'article',
             ])
             ->add('content', CKEditorType::class, [
                 'attr' => [
                     'class' => 'form-field',
                     'placeholder' => 'Contenu de l\'article'
                 ],
-                'label' => 'Contenu'
+                'label' => 'Contenu',
+                'required' => false
             ]);
     }
 

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let timeout = null;
   const title = document.querySelector("#article_title");
   let slug = document.querySelector(".article-slug");
+  const uploadedArea = document.querySelector(".uploaded-area");
 
   // Event
   title.addEventListener("keyup", function (event) {
@@ -40,4 +41,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return str;
   };
+
+  const upload = `<div class="upload-content hidden">
+                    <div class="upload-thumbnail">
+                      <img id="upload-thumbnail-img" />
+                    </div>
+                    <div class="upload-details flex-fill">
+                      <p>Titre</p>
+                      <small>taille</small>
+                    </div>
+                  </div>`;
+  uploadedArea.insertAdjacentHTML("afterend", upload);
+
+  uploadedArea.addEventListener("change", (e) => {
+    let fileInput = e.target.files;
+    let fileUpload = e.target.value;
+    let reader = new FileReader();
+
+    if (fileUpload != "") {
+      if (fileInput && fileInput[0]) {
+        document.querySelector(".upload-content").classList.remove("hidden");
+        reader.onload = (el) => {
+          document.getElementById("upload-thumbnail-img").src = el.target.result;
+          document.querySelector(".upload-details p").innerHTML = fileInput[0].name;
+          document.querySelector(".upload-details small").innerHTML =
+            (fileInput[0].size / 1024).toFixed(1) + " KB";
+        };
+        reader.readAsDataURL(fileInput[0]);
+      }
+    }
+  });
 });

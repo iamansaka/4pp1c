@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article as EntityArticle;
+use App\Entity\Category;
 use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -22,6 +23,15 @@ class Article extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
+        $categories = [];
+
+        for ($j = 0; $j < 5; $j++) {
+            $category = new Category();
+            $category->setName("Cat $j");
+            $categories[] = $category;
+            $manager->persist($category);
+        }
+
 
         for ($i = 0; $i < 100; $i++) {
             $article = new EntityArticle();
@@ -30,6 +40,7 @@ class Article extends Fixture
             $article->setSummary($this->faker->text());
             $article->setContent($this->faker->paragraphs(mt_rand(5, 15), true));
             $article->setIsPublished(mt_rand(0, 1));
+            $article->setCategory($categories[mt_rand(0, 4)]);
             $manager->persist($article);
         }
 
