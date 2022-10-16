@@ -10,7 +10,7 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
-class Article extends Fixture
+class ArticleFixtures extends Fixture
 {
     private Generator $faker;
 
