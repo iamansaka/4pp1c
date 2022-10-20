@@ -73,6 +73,34 @@
             </div>
         </section>
     </div>
+    <section class="adoptables">
+        <div class="container">
+            <div class="w-5">
+                <h2 class="heading-title">Animaux à l'adoption</h2>
+                <p class="heading-text">Vous trouverez ci-dessous quelques-un de nos loulous à adopter</p>
+            </div>
+            <div class="swiper-container adoptables-slider">
+                <div class="swiper-wrapper">
+                    {% for pet in pets %}
+                        <div class="swiper-slide" role="group" aria-roledescription="slide">
+                            {% include "components/_card_pets.html.twig" with {name: pet.name, gender: pet.sexe, content: pet.description} %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-control">
+                    <div class="swiper-button-prev">
+                        <img src="{{ asset('build/images/icon/arrow-left.svg') }}" alt="Précédent" title="Précédent">
+                    </div>
+                    <div class="swiper-button-next">
+                        <img src="{{ asset('build/images/icon/arrow-right.svg') }}" alt="Suivant" title="Suivant">
+                    </div>
+                </div>
+            </div>
+            {# <div class="adoptable-list">
+                {% include "components/_card_pets.html.twig" %}
+            </div> #}
+        </div>
+    </section>
     {% if not articles is same as([]) %}
     <section class="articles">
         <div class="container">
@@ -95,7 +123,7 @@
                 <h2 class="heading-title">Témoignages</h2>
                 <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hic nihil fuit, quod quaereremus. Praeclare hoc quidem. Hoc Hieronymus summum bonum esse dixit.</p>
             </div>
-            <div class="swiper-container">
+            <div class="swiper-container testimonials-slider">
                 <div class="swiper-wrapper">
                     {% for testimonial in testimonials %}
                         <div class="swiper-slide">
@@ -108,4 +136,7 @@
         </div>
     </section>
     {% endif %}
+    {# <div class="illustration">
+        <img src="{{ asset('build/images/580b57fbd9996e24bc43bb8c.png') }}" alt="">
+    </div> #}
 {% endblock %}
