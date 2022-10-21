@@ -32,9 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const adoptables = new Swiper(".adoptables-slider", {
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 10,
+    slidesPerView: 3,
+    spaceBetween: 25,
+    centerSlide: "true",
+    fade: "true",
+    grabCursor: "true",
     loopFillGroupWithBlank: true,
     keyboard: true,
     navigation: {
@@ -42,14 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".swiper-button-prev",
     },
     breakpoints: {
-      768: {
+      0: {
         slidesPerView: 1,
-        spaceBetween: 10,
       },
-      1024: {
+      520: {
+        slidesPerView: 2,
+      },
+      950: {
         slidesPerView: 3,
-        slidesPerGroup: 1,
-        spaceBetween: 30,
       },
     },
     modules: [Navigation],

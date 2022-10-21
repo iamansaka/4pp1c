@@ -1,20 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout/layout_base.html.twig' %}
 
-{% block title %}Hello PetsController!{% endblock %}
+{% block title %}Les chats à adopter - {{ parent() }}{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/Web/projets/symfony/4pattesdespoilset1coeur/src/Controller/PetsController.php'|file_link(0) }}">src/Controller/PetsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/Web/projets/symfony/4pattesdespoilset1coeur/templates/pets/index.html.twig'|file_link(0) }}">templates/pets/index.html.twig</a></code></li>
-    </ul>
+{% block content %}
+<div class="container">
+    <div class="d-flex flex-column justify-content-center m-auto text-center w-5 mb-50">
+        <h1 class="heading-title">Nos Chats et chatons à l'adoption</h1>
+        <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus ultrices vestibulum praesent. Ut turpis eget dictum in mauris amet. Urna sed tempus commodo in massa pellentesque ac. Suscipit non nunc nisi risus. </p>
+    </div>
+    {% if not pets.items is same as([]) %}
+        <div class="adoptables-list">
+            {% for pet in pets %}
+                {% include "components/_card_pets.html.twig" with {name: pet.name, gender: pet.sexe, content: pet.description} %}
+            {% endfor %}
+        </div>
+        <div class="d-flex align-items-center justify-content-center my-50">
+            <div class="navigation">
+                {{ knp_pagination_render(pets) }}
+            </div>
+        </div>
+    {% else %}
+        <h4>Il n'a pas de chats à adopter pour l'instant</h4>
+    {% endif %}
 </div>
 {% endblock %}
