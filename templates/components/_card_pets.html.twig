@@ -1,31 +1,21 @@
 <div class="card-pets">
     <div class="card-pets-thumbnail">
-        <a href="#">
-            <img src="https://www.la-spa.fr/app/assets-spa/uploads/animals/58316/zebreau-58316-6342a807f32d0.jpg" alt="{{ name }}">
-        </a>
+        <img src="https://www.la-spa.fr/app/assets-spa/uploads/animals/57228/roxane-pab24592-57228-633822c45eb5d.jpg" alt="{{ name }}">
     </div>
-    <div class="card-pets-content">
-        <div class="card-pets-header">
-            <div class="card-pets-infos">
+    <div class="card-pets-body px-15">
+        <div class="card-pets-meta">
+            <div class="card-pets-info">
                 <img src="{{ asset('build/images/icon/cat.svg') }}" alt="Icon chat">
-                <div class="card-pets-infos-item">
-                    <small class="card-pets-infos-title">Nom</small>
-                    <p class="card-pets-infos-name">{{ name }}</p>
-                </div>
+                <span>Nom <span class="card-pets-name">{{ name }}</span></span>
             </div>
-            <div class="card-pets-infos">
+            <div class="card-pets-info">
                 <img src="{{ asset('build/images/icon/gender.svg') }}" alt="icon sexe du chat">
-                <div class="card-pets-infos-item">
-                    <small class="card-pets-infos-title">Sexe</small>
-                    <p class="card-pets-infos-name">{{ gender ? 'Male' : 'Femelle' }}</p>
-                </div>
+                <span>Sexe <span class="card-pets-name">{{ gender ? 'Male' : 'Femelle' }}</span></span>
             </div>
         </div>
-        <div class="card-pets-body mb-10">
-            <p>{{ content|length > 133 ? content|slice(0, 133)~'...' : content}}</p>
-        </div>
-        <div class="card-pets-footer">
-            <a href="#" class="pets-link">Lire la suite <img src="{{ asset('/build/images/underline.svg') }}" alt="souligné"></a>
-        </div>
+        <p class="card-pets-content mt-10">{{ content|length > 133 ? content|slice(0, 133)~'...' : content}}</p>
+    </div>
+    <div class="card-pets-footer px-15 mb-20">
+        <button><a href="#" class="pets-link">Lire la suite <img src="{{ asset('/build/images/underline.svg') }}" alt="souligné"></a></button>
     </div>
 </div>

@@ -1,66 +1,57 @@
 .card-pets {
   display: flex;
   flex-direction: column;
-  gap: 0.925rem;
-  width: 350px;
-  height: 400px;
+  height: 370px;
+  gap: 1rem;
   border: 1px dashed rgba(196, 196, 196, 0.9);
   border-radius: 25px;
   overflow: hidden;
-}
-.card-pets-content {
-  padding: 0 20px 20px;
-}
-
-.card-pets-thumbnail {
-  display: block;
-  width: 100%;
-  height: 250px;
-  border-radius: 25px;
-  overflow: hidden;
-  img {
-    object-fit: cover;
-    object-position: 50% 50%;
+  .card-pets-thumbnail {
+    overflow: hidden;
     width: 100%;
-    height: 100%;
-    transition: transform 0.4s ease;
-
-    &:hover {
-      transform: scale(1.1);
+    height: 200px;
+    border-radius: 25px;
+    img {
+      width: 100%;
+      height: 100%;
+      vertical-align: middle;
+      object-fit: cover;
+      object-position: 50% 50%;
     }
-  }
-}
-
-.card-pets-header {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1.3rem;
-}
-.card-pets-infos {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  width: calc(100% / 2 - 10px);
-  margin-right: 10px;
-  line-height: 13px;
-  img {
-    vertical-align: middle;
-  }
-  .card-pets-infos-title {
-    font-size: var(--font-size-small);
-  }
-  .card-pets-infos-name {
-    color: var(--primary);
-    font-weight: var(--font-weight-medium);
   }
 }
 
 .card-pets-body {
   font-size: 0.8rem;
 }
+.card-pets-meta {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 10px;
+  .card-pets-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: var(--font-size-small);
+    width: calc(100% / 2 - 10px);
+    line-height: 1.2;
+    .card-pets-name {
+      display: block;
+      font-weight: var(--font-weight-medium);
+      font-size: 0.9rem;
+      color: var(--primary);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
 
 .card-pets-footer {
-  align-self: flex-end;
+  button {
+    border: none;
+    background: transparent;
+  }
 }
 .pets-link {
   position: relative;

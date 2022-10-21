@@ -51,6 +51,9 @@
   }
   &-20 {
     margin-bottom: 20px;
+    @include sm {
+      margin-bottom: calc(20px / 0.5);
+    }
   }
   &-50 {
     margin-bottom: 50px;
