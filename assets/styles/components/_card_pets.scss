@@ -1,7 +1,12 @@
 .card-pets {
-  display: flex;
-  flex-direction: column;
-  height: 370px;
+  // display: flex;
+  // flex-flow: column wrap;
+  // align-content: space-between;
+  // height: 370px;
+  display: grid;
+  grid-template-rows: repeat(2, max-content);
+  // align-content: space-between;
+  min-height: 350px;
   gap: 1rem;
   border: 1px dashed rgba(196, 196, 196, 0.9);
   border-radius: 25px;
@@ -52,6 +57,7 @@
 }
 
 .card-pets-footer {
+  align-self: flex-end;
   button {
     border: none;
     background: transparent;
@@ -76,4 +82,13 @@
   grid-template-columns: repeat(4, minmax(272px, 1fr));
   align-items: stretch;
   grid-gap: 1.2rem;
+  @include md {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include xs {
+    grid-template-columns: 1fr;
+  }
 }

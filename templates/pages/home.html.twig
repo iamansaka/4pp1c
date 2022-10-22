@@ -83,7 +83,7 @@
                 <div class="swiper-wrapper">
                     {% for pet in pets %}
                         <div class="swiper-slide" role="group" aria-roledescription="slide">
-                            {% include "components/_card_pets.html.twig" with {name: pet.name, gender: pet.sexe, content: pet.description} %}
+                            {% include "components/_card_pets.html.twig" with {name: pet.name, gender: pet.sexe, content: pet.description, link: path('app_pets_show', {slug: pet.name|lower, id: pet.id})} %}
                         </div>
                     {% endfor %}
                 </div>

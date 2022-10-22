@@ -1,0 +1,84 @@
+{% extends "layout/layout_base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adoption') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('adoption') }}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-50">
+    <a href="{{ path('app_pets') }}" class="link mb-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path></svg>
+        Retour
+    </a>
+    <h1 class="mb-50">{{ pet.name }}</h1>
+    <div class="pet-container">
+        <aside>
+            <div class="pet-aside">
+                <ul class="infos-list">
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/genre.png') }}" alt="icon sexe">
+                        </div>
+                        <p class="infos-item-text">Sexe <span>{{ pet.sexe ? 'Male' : 'Femelle' }}</span></p>
+                    </li>
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/genre.png') }}" alt="icon sexe">
+                        </div>
+                        <p class="infos-item-text">Age <span>7 mois</span></p>
+                    </li>
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/refuge.png') }}" alt="icon refuge">
+                        </div>
+                        <p class="infos-item-text">Arrivé au refuge <span>{{ pet.arrivedAtRefuge|date('d/m/Y') }}</span></p>
+                    </li>
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/vaccin.png') }}" alt="icon vacciné">
+                        </div>
+                        <p class="infos-item-text">Vacciné <span>{{ pet.isVaccinated ? 'Oui' : 'Non' }}</span></p>
+                    </li>
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/sterilized.png') }}" alt="icon stérilisé">
+                        </div>
+                        <p class="infos-item-text">Stérilisé <span>{{ pet.isSterilized ? 'Oui' : 'Non' }}</span></p>
+                    </li>
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/cat.png') }}" alt="icon chat">
+                        </div>
+                        <p class="infos-item-text">Chat <span>{{ pet.isAffinityCat ? 'Oui' : 'Non' }}</span></p>
+                    </li>
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/dog.png') }}" alt="icon chien">
+                        </div>
+                        <p class="infos-item-text">Chien <span>{{ pet.isAffinityDog ? 'Oui' : 'Non' }}</span></p>
+                    </li>
+                    <li class="infos-item">
+                        <div class="infos-item-icon">
+                            <img src="{{ asset('build/images/icon/children.png') }}" alt="icon enfant">
+                        </div>
+                        <p class="infos-item-text">Enfants <span>{{ pet.isAffinityChildren ? 'Oui' : 'Non' }}</span></p>
+                    </li>
+                </ul>
+                <div class="btn btn-primary btn-small d-flex align-items-center justify-content-center rounded"><img src="{{asset('/build/images/icon/donate.svg')}}" class="mr-10" alt="icon don">Je souhaite rencontrer {{ pet.name }}</div>
+            </div>
+        </aside>
+        <div class="pet-content">
+            <div class="shot-thumbnail mb-20">
+                <img src="//into-the-program.com/demo/images/sample010.jpg" alt="">
+            </div>
+            <div class="pet-body">{{ pet.description }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

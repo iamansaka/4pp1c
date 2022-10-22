@@ -16,6 +16,6 @@
         <p class="card-pets-content mt-10">{{ content|length > 133 ? content|slice(0, 133)~'...' : content}}</p>
     </div>
     <div class="card-pets-footer px-15 mb-20">
-        <button><a href="#" class="pets-link">Lire la suite <img src="{{ asset('/build/images/underline.svg') }}" alt="souligné"></a></button>
+        <button><a href="{{ link }}" class="pets-link">Lire la suite <img src="{{ asset('/build/images/underline.svg') }}" alt="souligné"></a></button>
     </div>
 </div>

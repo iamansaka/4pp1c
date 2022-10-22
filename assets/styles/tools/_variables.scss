@@ -5,6 +5,7 @@
   --dark: #111111;
   -ms-grid-layer: #272727;
   --whitesmoke: #fafbff;
+  --blue: #cbdaf6;
   --blue-dark: #273a5a;
   --bluesmoke: #e3edff;
   --danger: #e74c3c;
@@ -39,5 +40,8 @@
   --max-width: 1200px;
   @include lg {
     --max-width: 1140px;
+  }
+  @include md {
+    --max-width: 85%;
   }
 }
