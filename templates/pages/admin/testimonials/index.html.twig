@@ -5,7 +5,7 @@
 {% block content %}
     <div class="card">
         <div class="card-content">
-            <h1 class="card-title mb-10">Témoignages</h1>
+            <h1 class="card-title mb-20">La liste des avis</h1>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -22,13 +22,13 @@
                     <tbody>
                         {% for testimonial in testimonials %}
                             <tr>
-                                <th scope="row">{{ testimonial.id }}</th>
-                                <td>{{ testimonial.name }}</td>
-                                <td>{{ testimonial.email }}</td>
-                                <td><img src="{{ asset("build/images/stars/stars-"~ testimonial.rating ~".svg") }}" alt="Noté {{ testimonial.rating }} sur 5 étoiles" class="testimonials-rating"></td>
-                                <td>{{ testimonial.content | slice(0, 50) ~ '...' }}</td>
-                                <td><small class="status">Non Validé</small></td>
-                                <td><a href="{{ path('admin_testimonials_delete', {id: testimonial.id}) }}">Supprimé</a></td>
+                                <th data-label="Id" scope="row">{{ testimonial.id }}</th>
+                                <td data-label="Nom">{{ testimonial.name }}</td>
+                                <td data-label="Email">{{ testimonial.email }}</td>
+                                <td data-label="Note"><img src="{{ asset("build/images/stars/stars-"~ testimonial.rating ~".svg") }}" alt="Noté {{ testimonial.rating }} sur 5 étoiles" class="testimonials-rating"></td>
+                                <td data-label="Message">{{ testimonial.content | slice(0, 50) ~ '...' }}</td>
+                                <td data-label="Status"><small class="status">Non Validé</small></td>
+                                <td data-label="Actions" class="table-option"><a href="{{ path('admin_testimonials_delete', {id: testimonial.id}) }}"class="btn-actions btn-actions-icon tooltip" alt="Supprimer"><span class="icon icon-delete">Supprimer</span></a></td>
                             </tr>
 
                         {% endfor %}

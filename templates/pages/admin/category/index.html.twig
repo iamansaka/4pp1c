@@ -29,14 +29,14 @@
                 <tbody>
                     {% for categorie in categories %}
                         <tr>
-                            <td>#{{ categorie.id }}</td>
-                            <td>{{ categorie.name }}</td>
-                            <td>
-                                <a href="{{ path('admin_category_edit', {id: categorie.id}) }}" class="action-icon tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
-                                <a data-modal="#dialog-{{ categorie.id }}" class="action-icon open-button tooltip" alt="Supprimer"><span class="icon icon-delete">Supprimer</span></a>
+                            <td data-label="Id">#{{ categorie.id }}</td>
+                            <td data-label="Nom">{{ categorie.name }}</td>
+                            <td data-label="Actions" class="table-option">
+                                <a href="{{ path('admin_category_edit', {id: categorie.id}) }}" class="btn-actions btn-actions-icon tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
+                                <a data-modal="#dialog-{{ categorie.id }}" class="btn-actions btn-actions-icon tooltip open-button" alt="Supprimer"><span class="icon icon-delete">Supprimer</span></a>
                                 {% include "components/_modal_delete.html.twig" with {id: categorie.id, path: path('admin_category_delete', {id: categorie.id})} %}
                             </td>
-                           </tr>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>

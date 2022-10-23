@@ -1,29 +1,18 @@
-.action-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-}
-
 .icon {
   font-size: 0;
   text-indent: -3000px;
-  width: 18px;
-  height: 18px;
-  font-size: var(--font-size-small);
+  width: 16px;
+  height: 16px;
   background-repeat: no-repeat;
+  background-size: contain;
   overflow: hidden;
+  &.icon-show {
+    background-image: url("../../images/icon/view.svg");
+  }
   &.icon-edit {
-    background-image: url("../../images/icon/edit.svg");
+    background-image: url("../../images/icon/edit-2.svg");
   }
   &.icon-delete {
-    background-image: url("../../images/icon/shape.svg");
-  }
-
-  &:hover {
-    filter: invert(31%) sepia(80%) saturate(3321%) hue-rotate(330deg) brightness(96%)
-      contrast(92%);
+    background-image: url("../../images/icon/draft.svg");
   }
 }
