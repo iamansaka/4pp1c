@@ -5,7 +5,8 @@
     {%- if help is not empty -%}
         {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
     {%- endif -%}
-    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ errors|length > 0 ? 'form-element is-invalid' : 'form-element' }) %}
+    {# {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ errors|length > 0 ? 'form-element is-invalid' : 'form-element' }) %} #}
+    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ ' form-element' ~ (errors|length > 0 ? ' is-invalid' : '') }) %}
     <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
         {{- form_label(form) -}}
         {{- form_widget(form, widget_attr) -}}
@@ -25,7 +26,7 @@
 {%- endblock form_errors -%}
 
 {%- block choice_widget_expanded -%}
-    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ 'form-checkbox' }) %}
+    {% set row_attr = row_attr|merge({class: row_attr.class|default('') ~ ' form-checkbox' }) %}
     <div {% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
     {%- for child in form -%}
         <div class="form-check">
