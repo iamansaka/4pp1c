@@ -7,7 +7,7 @@
     <div class="card-content">
         <h1 class="card-title mb-10">Liste des chats et chatons</h1>
         <div class="d-flex flex-fill justify-content-end mb-20">
-            <a href="{{ path('admin_article_new') }}" class="btn btn-small btn-primary">Ajouter un chat</a>
+            <a href="{{ path('admin_pets_new') }}" class="btn btn-small btn-primary">Ajouter un chat</a>
         </div>
         <div class="table-responsive">
             <table class="table">
@@ -35,9 +35,9 @@
                             <td data-label="Mise à jour">{{ pet.updatedAt|ago(locale='fr') }}</td>
                             <td data-label="Actions" class="table-option">
                                 <a href="#show" class="btn-actions btn-actions-icon tooltip" alt="Afficher"><span class="icon icon-show">Afficher</span></a>
-                                <a href="#edition" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
-                                <button class="open-button btn-actions tooltip" alt="Supprimer" data-modal="#dialog-1"><span class="icon icon-delete">Supprimer</span></button>
-                                {% include "components/_modal_delete.html.twig" with {id: 1, path: '#test'} %}
+                                <a href="{{ path('admin_pets_edit', {id: pet.id}) }}" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
+                                <button class="open-button btn-actions tooltip" alt="Supprimer" data-modal="#dialog-{{ pet.id }}"><span class="icon icon-delete">Supprimer</span></button>
+                                {% include "components/_modal_delete.html.twig" with {id: pet.id, path: path('admin_pets_delete', {id: pet.id})} %}
                             </td>
                         </tr>
                     {% endfor %}
