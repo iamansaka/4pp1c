@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
-class Testimonials extends Fixture
+class TestimonialsFixtures extends Fixture
 {
     private Generator $faker;
 

@@ -1,0 +1,21 @@
+<div class="card-pets">
+    <div class="card-pets-thumbnail">
+        <img src="https://www.la-spa.fr/app/assets-spa/uploads/animals/57228/roxane-pab24592-57228-633822c45eb5d.jpg" alt="{{ name }}">
+    </div>
+    <div class="card-pets-body px-15">
+        <div class="card-pets-meta">
+            <div class="card-pets-info">
+                <img src="{{ asset('build/images/icon/cat.svg') }}" alt="Icon chat">
+                <span>Nom <span class="card-pets-name">{{ name }}</span></span>
+            </div>
+            <div class="card-pets-info">
+                <img src="{{ asset('build/images/icon/gender.svg') }}" alt="icon sexe du chat">
+                <span>Sexe <span class="card-pets-name">{{ gender ? 'Male' : 'Femelle' }}</span></span>
+            </div>
+        </div>
+        <p class="card-pets-content mt-10">{{ content|length > 133 ? content|slice(0, 133)~'...' : content}}</p>
+    </div>
+    <div class="card-pets-footer px-15 mb-20">
+        <button><a href="{{ link }}" class="pets-link">Lire la suite <img src="{{ asset('/build/images/underline.svg') }}" alt="souligné"></a></button>
+    </div>
+</div>

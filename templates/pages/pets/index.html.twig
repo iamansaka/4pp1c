@@ -1,0 +1,26 @@
+{% extends 'layout/layout_base.html.twig' %}
+
+{% block title %}Les chats à adopter - {{ parent() }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex flex-column justify-content-center m-auto text-center w-5 mb-50">
+        <h1 class="heading-title">Nos Chats et chatons à l'adoption</h1>
+        <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus ultrices vestibulum praesent. Ut turpis eget dictum in mauris amet. Urna sed tempus commodo in massa pellentesque ac. Suscipit non nunc nisi risus. </p>
+    </div>
+    {% if not pets.items is same as([]) %}
+        <div class="adoptables-list">
+            {% for pet in pets %}
+                {% include "components/_card_pets.html.twig" with {name: pet.name, gender: pet.sexe, content: pet.description, link: path('app_pets_show', {slug: pet.name|lower, id: pet.id})} %}
+            {% endfor %}
+        </div>
+        <div class="d-flex align-items-center justify-content-center my-50">
+            <div class="navigation">
+                {{ knp_pagination_render(pets) }}
+            </div>
+        </div>
+    {% else %}
+        <h4>Il n'a pas de chats à adopter pour l'instant</h4>
+    {% endif %}
+</div>
+{% endblock %}

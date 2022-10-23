@@ -17,7 +17,8 @@ class TestimonialsType extends AbstractType
         $builder
             ->add('content', TextareaType::class, [
                 'attr' => [
-                    'class' => 'form-field'
+                    'class' => 'form-field',
+                    'rows' => 5,
                 ],
                 'label' => 'Mon témoignage',
                 'required' => false
