@@ -41,16 +41,8 @@
                     {{ form_row(form.thumbnail) }}
                     {{ form_row(form.description) }}
                 </div>
-                {# {{ form_row(form.isVaccinated) }} #}
                 {{ form_rest(form) }}
 
-                {# <fieldset>
-                    <legend>Information générales</legend>
-                        {{ form_row(form.isAffinityDog) }}
-                        {{ form_row(form.isAffinityCat) }}
-                        {{ form_row(form.isAffinityChildren) }}
-                    </div>
-                </fieldset> #}
 
                 <div class="d-flex align-items-center">
                     <button class="btn btn-small btn-primary mr-10">{{ app.request.attributes.get('_route') == "admin_pets_new" ? 'Ajouter le chat(on)' : 'Modifier le chat(on)' }}</button>

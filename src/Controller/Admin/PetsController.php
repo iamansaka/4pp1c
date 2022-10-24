@@ -5,10 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Pets;
 use App\Form\PetsType;
 use App\Repository\PetsRepository;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,7 +33,7 @@ class PetsController extends AbstractController
 
     #[Route('/admin/pets/nouveau', name: 'admin_pets_new', methods: ['GET', 'POST'])]
     #[Route('/admin/pets/{id}', name: 'admin_pets_edit', methods: ['GET', 'POST'])]
-    public function new(?Pets $pet, Request $request, EntityManagerInterface $em): Response
+    public function new(?Pets $pet, Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $edit = $pet ? true : false;
 
@@ -50,16 +50,12 @@ class PetsController extends AbstractController
 
         if ($petForm->isSubmitted() && $petForm->isValid()) {
 
-            $pet = $petForm->getData();
             $picture = $petForm->get('thumbnail')->getData();
-            $filename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME) . '-' . bin2hex(random_bytes(10));
-            $extension = $picture->guessExtension() ?? 'jpg';
+            if ($picture) {
+                $olderPicture = $edit ? $pet->getPicture() : null;
+                $pet->setPicture($fileUploader->uploadFile($picture, $olderPicture));
+            }
 
-            /** @var UploadedFile */
-            $picture->move('animals', $filename . '.' . $extension);
-
-            // dd($picture, $filename);
-            $pet->setPicture($filename . '.' . $extension);
             $em->persist($pet);
             $em->flush();
 
