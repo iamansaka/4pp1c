@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Pets;
 use App\Form\PetsType;
 use App\Repository\PetsRepository;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +33,7 @@ class PetsController extends AbstractController
 
     #[Route('/admin/pets/nouveau', name: 'admin_pets_new', methods: ['GET', 'POST'])]
     #[Route('/admin/pets/{id}', name: 'admin_pets_edit', methods: ['GET', 'POST'])]
-    public function new(?Pets $pet, Request $request, EntityManagerInterface $em): Response
+    public function new(?Pets $pet, Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $edit = $pet ? true : false;
 
@@ -48,7 +49,13 @@ class PetsController extends AbstractController
         $petForm->handleRequest($request);
 
         if ($petForm->isSubmitted() && $petForm->isValid()) {
-            $pet = $petForm->getData();
+
+            $picture = $petForm->get('thumbnail')->getData();
+            if ($picture) {
+                $olderPicture = $edit ? $pet->getPicture() : null;
+                $pet->setPicture($fileUploader->uploadFile($picture, $olderPicture));
+            }
+
             $em->persist($pet);
             $em->flush();
 
