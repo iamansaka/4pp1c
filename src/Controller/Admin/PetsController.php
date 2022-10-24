@@ -8,6 +8,7 @@ use App\Repository\PetsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,7 +49,17 @@ class PetsController extends AbstractController
         $petForm->handleRequest($request);
 
         if ($petForm->isSubmitted() && $petForm->isValid()) {
+
             $pet = $petForm->getData();
+            $picture = $petForm->get('thumbnail')->getData();
+            $filename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME) . '-' . bin2hex(random_bytes(10));
+            $extension = $picture->guessExtension() ?? 'jpg';
+
+            /** @var UploadedFile */
+            $picture->move('animals', $filename . '.' . $extension);
+
+            // dd($picture, $filename);
+            $pet->setPicture($filename . '.' . $extension);
             $em->persist($pet);
             $em->flush();
 
