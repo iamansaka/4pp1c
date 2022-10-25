@@ -26,7 +26,7 @@ Encore
   .addEntry("testimonials", "./assets/scripts/pages/testimonials.js")
   .addEntry("articles", "./assets/scripts/pages/articles.js")
   .addEntry("adoption", "./assets/scripts/pages/adoption.js")
-  // .addStyleEntry("adoption", "./assets/styles/pages/adoption.scss")
+  .addStyleEntry("profilePets", "./assets/styles/pages/pet_show.scss")
   // .addEntry("home", "./assets/scripts/pages/homepage.js")
   // .addEntry("articles", "./assets/scripts/pages/articles.js")
   // .addStyleEntry("home", "./assets/styles/pages/home.scss")
