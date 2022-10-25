@@ -27,14 +27,14 @@
                     {% for pet in pets %}    
                         <tr>
                             <td data-label="id">#{{ pet.id }}</td>
-                            <td data-label="Thumbnail"><img src="https://www.dwinawan.com/blog/thumb_article36.jpg" alt=""></td>
+                            <td data-label="Thumbnail"><img src="{{ pet.picture ? pet.picture : asset(imageBasic) }}" alt="{{ pet.name }}"></td>
                             <td data-label="Nom">{{ pet.name }}</td>
                             <td data-label="N°Registre"><span class="registry {{ pet.registryNumber ?? 'no-registry' }}">{{ pet.registryNumber ? pet.registryNumber : 'Pas de registre' }}</span></td>
                             <td data-label="Status"><span class="badge badge-adoption">A l'adoption</span></td>
                             <td data-label="Date de création">{{ pet.createdAt|date('d M. Y') }}</td>
                             <td data-label="Mise à jour">{{ pet.updatedAt|ago(locale='fr') }}</td>
                             <td data-label="Actions" class="table-option">
-                                <a href="#show" class="btn-actions btn-actions-icon tooltip" alt="Afficher"><span class="icon icon-show">Afficher</span></a>
+                                <a href="{{ path('admin_pets_show', {id: pet.id}) }}" target="_blank" class="btn-actions btn-actions-icon tooltip" alt="Afficher"><span class="icon icon-show">Afficher</span></a>
                                 <a href="{{ path('admin_pets_edit', {id: pet.id}) }}" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
                                 <button class="open-button btn-actions tooltip" alt="Supprimer" data-modal="#dialog-{{ pet.id }}"><span class="icon icon-delete">Supprimer</span></button>
                                 {% include "components/_modal_delete.html.twig" with {id: pet.id, path: path('admin_pets_delete', {id: pet.id})} %}

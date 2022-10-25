@@ -42,6 +42,7 @@ class PetsType extends AbstractType
                     'class' => 'form-field uploaded-area'
                 ],
                 'label' => 'Photo du chat(on)',
+                'required' => false,
                 'mapped' => false
             ])
             ->add('description', TextareaType::class, [

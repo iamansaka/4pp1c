@@ -31,6 +31,12 @@
   font-weight: 600;
 }
 
+.btn-blue {
+  background-color: var(--blue);
+  color: var(--white);
+  font-weight: 600;
+}
+
 .btn-border {
   color: var(--blue-dark);
   // border: 1px solid #d9dee3;
@@ -38,4 +44,8 @@
 
 .btn-small {
   font-size: var(--font-size-small);
+}
+
+.btn-bold {
+  font-weight: var(--font-weight-semi-bold);
 }

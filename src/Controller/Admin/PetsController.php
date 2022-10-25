@@ -7,6 +7,7 @@ use App\Form\PetsType;
 use App\Repository\PetsRepository;
 use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,7 @@ class PetsController extends AbstractController
     public function index(Request $request, PetsRepository $petsRepo, PaginatorInterface $paginator): Response
     {
         $pets = $paginator->paginate(
-            $petsRepo->findAll(),
+            $petsRepo->findBy([], ['id' => 'DESC']),
             $request->query->getInt('page', 1),
             10
         );
@@ -32,7 +33,7 @@ class PetsController extends AbstractController
     }
 
     #[Route('/admin/pets/nouveau', name: 'admin_pets_new', methods: ['GET', 'POST'])]
-    #[Route('/admin/pets/{id}', name: 'admin_pets_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/pets/edition/{id}', name: 'admin_pets_edit', methods: ['GET', 'POST'])]
     public function new(?Pets $pet, Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $edit = $pet ? true : false;
@@ -70,6 +71,22 @@ class PetsController extends AbstractController
 
         return $this->render('pages/admin/pets/new.html.twig', [
             'form' => $petForm->createView()
+        ]);
+    }
+
+    #[Route('admin/pets/{id}', name: 'admin_pets_show', methods: ['GET'])]
+    public function show(ManagerRegistry $doctrine, int $id): Response
+    {
+        $pet = $doctrine->getRepository(Pets::class)->find($id);
+
+        if (!$pet) {
+            return throw $this->createNotFoundException('Le chat(on) que tu cherches n\'est pas ou plus disponible.');
+        }
+
+        dump($pet);
+
+        return $this->render('pages/admin/pets/show.html.twig', [
+            'pet' => $pet
         ]);
     }
 
