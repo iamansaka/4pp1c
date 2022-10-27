@@ -20,6 +20,8 @@ class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $article = $builder->getData();
+
         $builder
             ->add('title', TextType::class, [
                 'attr' => [
@@ -43,7 +45,8 @@ class ArticleType extends AbstractType
                     'class' => 'form-field uploaded-area'
                 ],
                 'label' => 'Image à la une',
-                'mapped' => false
+                'mapped' => false,
+                'required' => false
             ])
             ->add('summary', TextType::class, [
                 'attr' => [
@@ -75,7 +78,7 @@ class ArticleType extends AbstractType
                 'choice_attr' => function ($choice, $key, $value) {
                     return ['class' => 'form-check-input'];
                 },
-                'data' => false,
+                'data' => $article->isIsPublished() ? $article->isIsPublished() : false,
                 'label' => 'Status de l\'article',
             ])
             ->add('content', CKEditorType::class, [

@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="article-thumbnail m-auto mb-50">
-            <img src="https://www.dwinawan.com/blog/thumb_article36.jpg" alt="image de l'article">
+            <img src="{{ article.picture ? article.picture : asset(imageBasic) }}" alt="{{ article.title }}">
         </div>
         <div class="container-small">
             <div class="article-action my-20 d-flex align-items-center justify-content-end">

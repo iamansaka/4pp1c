@@ -110,7 +110,7 @@
             </div>
             <div class="articles-list">
                 {% for article in articles %}
-                    <a href="{{ path('app_article_show', {slug: article.slug}) }}" class="article-item">{% include "components/_card_article.html.twig" with { title: article.title, summary: article.summary, date: article.createdAt } %}</a>
+                    <a href="{{ path('app_article_show', {slug: article.slug}) }}" class="article-item">{% include "components/_card_article.html.twig" with { title: article.title, summary: article.summary, date: article.createdAt, category: article.category.name, picture: article.picture } %}</a>
                 {% endfor %}
             </div>
         </div>

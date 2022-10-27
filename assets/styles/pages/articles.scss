@@ -36,10 +36,13 @@
 }
 .article-thumbnail {
   width: 850px;
+  height: 520px;
   overflow: hidden;
   border-radius: 5px;
   img {
     width: 100%;
+    height: 100%;
+    object-position: center center;
     vertical-align: middle;
   }
 }

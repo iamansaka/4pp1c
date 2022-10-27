@@ -38,9 +38,9 @@
                         {% for article in articles %}
                             <tr>
                                 <td>#{{ article.id }}</td>
-                                <td><img src="https://www.dwinawan.com/blog/thumb_article36.jpg" alt=""></td>
+                                <td><img src="{{ article.picture ? article.picture : asset(imageBasic) }}" alt="{{ article.title }}"></td>
                                 <td>{{ article.title|length > 25 ? article.title|slice(0, 25)~'...' : article.title}}</td>
-                                <td class="text-primary">Nouvelles des adoptés</td>
+                                <td class="text-primary">{{ article.category.name }}</td>
                                 <td>{{ article.createdAt|date('d.m.Y') }}</td>
                                 <td>{{ article.updatedAt|ago(locale='fr') }}</td>
                                 <td><small class="status {{ article.isPublished ? 'published' : 'brouillon' }}">{{ article.isPublished ? 'Publié' : 'Brouillon' }}</small></td>
