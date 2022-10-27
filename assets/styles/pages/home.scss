@@ -1,7 +1,7 @@
 // Pages d'Accueil
 //// ====================================
-
 @use "../tools/media_queries" as *;
+@import "../tools/animation";
 
 //// Introduction
 //// ====================================
@@ -193,7 +193,7 @@
 //// ====================================
 #testimonials {
   background: left 0 center url("../../images/underline-2.svg") no-repeat;
-  margin-bottom: 300px;
+  margin-bottom: 100px;
 }
 
 .swiper-container {
@@ -202,8 +202,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  // height: 100%;
-  // overflow-x: hidden;
 }
 .swiper-slide {
   display: flex;
@@ -267,5 +265,70 @@
   right: -30px;
   @include sm {
     right: -15px;
+  }
+}
+
+//// Illustration
+//// ====================================
+.illustration {
+  display: none;
+  @include lg {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 180px;
+    .illustration-bush,
+    .illustration-grass,
+    .illustration-cat {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    .illustration-grass {
+      left: 0;
+      right: 0;
+      background-image: url("../../images/580b585b2edbce24c47b26bc.png");
+      background-position: center bottom;
+      z-index: -1;
+    }
+    .illustration-bush {
+      max-width: 525px;
+      height: 390px;
+      left: calc(100% - 35%);
+      bottom: -15%;
+      background-image: url("../../images/580b585b2edbce24c47b26b8.png");
+      z-index: 2;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      &:hover {
+        animation: vibrate 0.3s linear infinite both;
+      }
+    }
+    .illustration-cat {
+      max-width: 200px;
+      height: 200px;
+      // left: calc(100% - 35%);
+      left: calc(100% - 27%);
+      bottom: -15%;
+      background-image: url("../../images/580b57fbd9996e24bc43bb8c.png");
+      transition: all 2.5s ease;
+      // z-index: -;
+      &.meow::before {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 100px;
+        background: url("../../images/meow.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        transform: translate(-67%, -57%);
+        visibility: visible;
+        opacity: 1;
+      }
+    }
   }
 }
