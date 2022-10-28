@@ -6,17 +6,79 @@
   align-items: center;
   column-gap: 3.1rem;
 }
-.passport-picture {
+// .passport-picture {
+//   max-width: 250px;
+//   width: 100%;
+//   padding: 0.8rem;
+//   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+//   strong {
+//     display: block;
+//     text-align: center;
+//     font-size: 0.869rem;
+//   }
+// }
+
+.banner-thumbnail {
+  position: relative;
   max-width: 250px;
   width: 100%;
-  padding: 0.8rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  strong {
-    display: block;
-    text-align: center;
-    font-size: 0.869rem;
+  background: #fafbff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0.456rem;
+    top: 0.456rem;
+    bottom: 0;
+    background: #fdf0e0;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.11);
+    transform: rotate(-2.33deg);
+    z-index: -1;
   }
 }
+.banner-picture {
+  background-color: var(--white);
+  padding: 0.8rem;
+  border: 1px solid var(--dark);
+  box-shadow: 3px 6px 3px rgba(1, 1, 1, 0.19);
+  transform: rotate(3.06deg);
+
+  strong {
+    display: block;
+    font-size: 0.869rem;
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+}
+.banner-adhesif {
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 60px;
+  background: url("../../images/adhesif.svg") no-repeat;
+  background-size: contain;
+  opacity: 0.7;
+  transform: rotate(-30deg);
+  &.adhesif-1 {
+    top: 0;
+    left: -5%;
+  }
+  &.adhesif-2 {
+    bottom: -15%;
+    right: -13%;
+  }
+}
+.banner-tampon {
+  display: block;
+  position: absolute;
+  bottom: calc(0% + 10%);
+  left: 0;
+  width: 20%;
+  height: auto;
+}
+
 .passport-content {
   ul {
     display: flex;

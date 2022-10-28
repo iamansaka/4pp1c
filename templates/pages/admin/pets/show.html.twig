@@ -18,9 +18,18 @@
             </div>
             <h1 class="passport-title mb-20">Information générale : {{ pet.name }}</h1>
             <div class="passport">
-                <div class="passport-picture">
+                {# <div class="passport-picture">
                     <img src="{{ pet.picture ? pet.picture : asset(imageBasic) }}" alt="{{ pet.name }}">
                     <strong>{{ pet.name }}</strong>
+                </div> #}
+                <div class="banner-thumbnail">
+                    <div class="banner-picture">
+                        <img src="{{ pet.picture ? pet.picture : asset(imageBasic) }}" alt="{{ pet.name }}">
+                        <strong>{{ pet.name }}</strong>
+                    </div>
+                    <span class="banner-adhesif adhesif-1"></span>
+                    <span class="banner-adhesif adhesif-2"></span>
+                    <img src="{{ asset('build/images/tampon_adopted.png') }}" alt="tampon adopté(e)" class="banner-tampon">
                 </div>
                 <div class="passport-content">
                     <ul>

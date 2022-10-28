@@ -1,0 +1,20 @@
+.page-content {
+  p {
+    margin-block: 1rem;
+    font-size: 0.95rem;
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-position: under;
+    color: var(--primary);
+  }
+}
+.page-block {
+  background-color: #f7fafb;
+  border: 1px solid #dee8f0;
+  margin-top: 1rem;
+  margin-bottom: 30px;
+  padding: 0.8rem;
+  border-radius: 4px;
+}

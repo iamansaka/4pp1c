@@ -4,6 +4,9 @@ import "swiper/css/pagination";
 import "swiper/css";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const bush = document.querySelector(".illustration-bush");
+  const cat = document.querySelector(".illustration-cat");
+
   const swiper = new Swiper(".testimonials-slider", {
     slidesPerView: 1,
     slidesPerGroup: 1,
@@ -13,9 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     pagination: {
       el: ".swiper-custom-pagination",
       clickable: true,
-      // renderBullet: function (index, className) {
-      //   return '<span class="' + className + '">' + (index + 1) + "</span>";
-      // },
     },
     breakpoints: {
       768: {
@@ -55,5 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
     modules: [Navigation],
+  });
+
+  bush.addEventListener("click", () => {
+    cat.style.transform = "translateX(-100%)";
+    bush.style.animation = "none";
   });
 });

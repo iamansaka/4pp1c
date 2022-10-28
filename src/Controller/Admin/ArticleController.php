@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Service\FileUploader;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -42,15 +43,18 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/admin/article/nouveau', name: 'admin_article_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $em): Response
+    public function new(Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $article = new Article();
         $articleForm = $this->createForm(ArticleType::class, $article);
         $articleForm->handleRequest($request);
 
         if ($articleForm->isSubmitted() && $articleForm->isValid()) {
+            $picture = $articleForm->get("pictureFile")->getData();
             $slug = (new Slugify())->slugify($article->getTitle());
             $article->setSlug($slug);
+            $article->setPicture($fileUploader->uploadFile($picture));
+
             $em->persist($article);
             $em->flush();
 

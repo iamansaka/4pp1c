@@ -20,9 +20,9 @@
                 </h1>
                 <div class="hero-text">Bienvenue sur notre site internet, vous y trouverez toutes nos loulous à l'adoption,, notre histoire, nos articles, nos conseils et de nombreux resignement sur les animaux.</div>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/track-cat.svg')}}" class="icon" alt="icon empreinte pattes animaux">Découvrir les animaux</a>
-                    <a href="#" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/donate.svg')}}" class="icon" alt="icon don">Faire un don</a>
-                    <a href="#" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/letter-contact.svg')}}" class="icon" alt="icon mail">Nous contacter</a>
+                    <a href="{{ path('app_pets') }}" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/track-cat.svg')}}" class="icon" alt="icon empreinte pattes animaux">Découvrir les animaux</a>
+                    <a href="#don" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/donate.svg')}}" class="icon" alt="icon don">Faire un don</a>
+                    <a href="#contact" class="btn btn-primary rounded"><img src="{{asset('/build/images/icon/letter-contact.svg')}}" class="icon" alt="icon mail">Nous contacter</a>
                 </div>
             </div>
         </div>
@@ -64,11 +64,11 @@
                 <img src="{{ asset('build/images/association.jpg') }}" alt="L'association">
             </div>
             <div class="heading-content">
-                <div class="heading-title">4 pattes des poils et 1 coeur</div>
+                <div class="heading-title">Qui sommes-nous ?</div>
                 <p>
-                    4 Pattes des poils et 1 coeur  est 1 coeur est un refuge pour les chats et chatons abandonnés, maltraités, sans famille.<br/><br/>
-                    Quam si explicavisset, non tam haesitaret. Tria genera bonorum; Quid igitur, inquit, eos responsuros putas? Sed quot homines, tot sententiae; Hoc est non dividere, sed frangere.<br/><br/>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hic nihil fuit, quod quaereremus. Praeclare hoc quidem. Hoc Hieronymus summum bonum esse dixit. Tum Quintus: Est plane, Piso, ut dicis, inquit. Cur id non ita fit?
+                    <b>4 pattes des poils et 1 coeur</b> est une association loi 1901. Elle a été créee dans le but de venir en aide aux animaux abandonnés et de leur trouver un futur cadre de vie autre que celui de la rue.
+                    L'association prend en charge des chats qu'elle place en famille d'accueil en vue de leur adoption.<br/><br/>
+                    Association de Loi 1901 à but non lucratif, elle se compose d'une présidente, d'une trésorière, d'une secrétaire, de bénévoles et de familles d'accueil. Elle fonctionne sans salarié et ne possède pas de refuge.
                 </p>
             </div>
         </section>
@@ -110,7 +110,7 @@
             </div>
             <div class="articles-list">
                 {% for article in articles %}
-                    <a href="{{ path('app_article_show', {slug: article.slug}) }}" class="article-item">{% include "components/_card_article.html.twig" with { title: article.title, summary: article.summary, date: article.createdAt } %}</a>
+                    <a href="{{ path('app_article_show', {slug: article.slug}) }}" class="article-item">{% include "components/_card_article.html.twig" with { title: article.title, summary: article.summary, date: article.createdAt, category: article.category.name, picture: article.picture } %}</a>
                 {% endfor %}
             </div>
         </div>
@@ -136,7 +136,9 @@
         </div>
     </section>
     {% endif %}
-    {# <div class="illustration">
-        <img src="{{ asset('build/images/580b57fbd9996e24bc43bb8c.png') }}" alt="">
-    </div> #}
+    <div class="illustration">
+        <span class="illustration-grass"></span>
+        <span class="illustration-bush"></span>
+        <span class="illustration-cat hidden-animation meow "></span>
+    </div>
 {% endblock %}
