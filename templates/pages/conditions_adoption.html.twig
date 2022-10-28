@@ -1,0 +1,27 @@
+{% extends "layout/layout_base.html.twig" %}
+
+{% block title %}Conditions d'adoption - {{ parent() }}{% endblock %}
+
+{% block content %}
+<div class="page-content container">
+    <h1 class="text-primary mt-50">Conditions d'adoption</h1>
+    <p class="text-small mt-5 mb-10"><strong>Vous êtes-vous posés les bonnes question avant d'adopter un de nos loulous ?</strong> Avez-vous pensé à votre environnement, votre mode de vie et votre organisation, aux frais que peuvent engendrer un animal de compagnie (frais vétérinaires, nourriture...) ?</p>
+    <p class="mb-20">Vous souhaitez adopter ? Merci de remplir ce formulaire en ligne</p>
+    <div class="page-block">
+        <h3 class="page-title">Documents à fournir lors de l'adoption</h3>
+        <ul>
+            <li>Une Pièce d'identité</li>
+            <li>Un justificatif de domicile récent</li>
+        </ul>
+    </div>
+    <div class="page-block">
+        <h3 class="page-title">Frais d'adoption</h3>
+        <ul>
+            <li>Une participation au <b>frais de vétérinaires</b> de 135€.</li>
+            <li>Une <b>adhésion à l'association</b> d'un montant de 10€.</li>
+        </ul>
+        <p>Ces frais couvrent l'identification, la primo-vaccination, le déparasitage ainsi que la stérilisation.</p>
+        <p class="text-primary text-small">*Pour les chatons, un bon de stérilisation à valoir chez nos vétérinaires partenaires vous sera délivrer afin de procéder à celle-ci à ses 6 mois.</p>
+    </div>
+</div>
+{% endblock %}

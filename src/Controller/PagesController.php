@@ -25,4 +25,10 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/mentions.html.twig');
     }
+
+    #[Route('/conditions-dadoption', name: 'app_cond_adoption')]
+    public function conditionsAdoption(): Response
+    {
+        return $this->render('pages/conditions_adoption.html.twig');
+    }
 }

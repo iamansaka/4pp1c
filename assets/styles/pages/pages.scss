@@ -9,6 +9,11 @@
     text-underline-position: under;
     color: var(--primary);
   }
+
+  ul {
+    list-style: circle;
+    padding-left: 1.5rem;
+  }
 }
 .page-block {
   background-color: #f7fafb;
@@ -17,4 +22,11 @@
   margin-bottom: 30px;
   padding: 0.8rem;
   border-radius: 4px;
+}
+.page-title {
+  border-bottom: 1px solid #eceff1;
+  color: var(--blue-dark);
+  font-size: 0.956rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 1rem;
 }
