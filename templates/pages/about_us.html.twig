@@ -1,0 +1,86 @@
+{% extends "layout/layout_base.html.twig" %}
+
+{% block title %}Qui sommes nous - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+{% endblock %}
+
+{% block content %}
+<div class="pabout-banner"></div>
+<div class="container">
+    <div class="pabout-wrapper d-flex flex-row-nowrap justify-content-between mb-50">
+        <div class="pabout-map">
+            <div id="map"></div>
+        </div>
+        <div class="pabout-info page-block">
+            <div class="pabout-tag">4 Pattes des Poils et 1 Coeur</div>
+            <ul class="page-list d-flex flex-column gap-10">
+                <li class="page-list-item"><strong>Adresse :</strong>22 Les Roches, 85510 Le Boupère</li>
+                <li class="page-list-item"><strong>Téléphone :</strong><a href="tel:+33669336165">06 69 33 61 65</a></li>
+                <li class="page-list-item"><p>Passionnés par les animaux, nous avons ouvert une association afin de venir en aide à ceux abandonnés.</p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pabout-body page-block">
+        <h1 class="page-title">Notre histoire</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam porttitor parturient ornare ac augue hac elementum. Massa scelerisque a nec viverra. Viverra nunc sodales consequat tempor, eu ultrices a et. Odio integer hac facilisis mattis varius orci tristique feugiat et. Vitae in non velit urna mattis nullam auctor. Faucibus convallis sed vulputate porttitor cursus fermentum, tellus sit. Nibh a nulla libero interdum. Ullamcorper id iaculis diam mauris tempus congue vulputate adipiscing. Eu risus ut adipiscing cursus ac. Malesuada nam rhoncus bibendum arcu scelerisque volutpat, amet mi. Enim posuere mollis lobortis bibendum. Tellus adipiscing imperdiet odio blandit. Enim nibh posuere nulla ultrices. Fringilla proin viverra tristique facilisi. Tincidunt amet malesuada non diam elementum. Vulputate pharetra, orci maecenas aliquet aliquam volutpat quis ac eu.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts_footer %}
+    {{ parent() }}
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <script>
+        // Récupère les coordonnées GPS de ville
+        async function getGpsData (ville) {
+            const value = ville.replace(",", "%2C".replace(" ", "+"));
+            const r = await fetch("https://nominatim.openstreetmap.org/?addressdetails=1&q="+ value +"&format=json&limit=1", {
+                method: "GET",
+                headers: {
+                    "Accept" : "application/json"
+                }
+            })
+            if(r.ok === true) {
+                return r.json();
+            } else {
+                throw new Erro('Impossible de contacter le serveur');
+            }
+        }
+
+
+        function initMap() {
+            // Initialise la carte
+            var carte = L.map('map').setView([46.8072308, -0.9732717], 13);
+    
+            // Charge les tuiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(carte);
+    
+            // Marqueur et popup
+            var marker = L.marker([46.8072308, -0.9732717]).addTo(carte);
+            marker.bindPopup("<div class='pabout-map-popup'><strong>4 Pattes des Poils et 1 Coeur</strong><div>22 Les Roches<br>85510 Le Boupère</div><a href={{ path('app_home') }}><button class='btn-map'>Contacter</button></a></div>").openPopup();
+        }
+
+        window.onload = () => {
+            let ville = [];
+
+            getGpsData("22 Les Roches, 85510 Le Boupère").then(data => {
+                ville.push({
+                    "latitude": data[0]["lat"],
+                    "longetitude":  data[0]["lon"]
+                })
+            })
+
+            console.log(ville[0]);
+
+            initMap()
+        }
+
+    </script>
+{% endblock %}
