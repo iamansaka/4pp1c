@@ -68,13 +68,18 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/admin/article/edition/{id}', name: 'admin_article_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Article $article, EntityManagerInterface $em): Response
+    public function edit(Request $request, Article $article, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $articleForm = $this->createForm(ArticleType::class, $article);
         $articleForm->handleRequest($request);
 
         if ($articleForm->isSubmitted() && $articleForm->isValid()) {
             $article = $articleForm->getData();
+            $picture = $articleForm->get('pictureFile')->getData();
+            if ($picture) {
+                $article->setPicture($fileUploader->uploadFile($picture, $article->getPicture() ? $article->getPicture() : null));
+            }
+
             $em->persist($article);
             $em->flush();
 
