@@ -34,7 +34,7 @@
                                 <td data-label="Téléphone" {% if partner.representativePhone is empty %}class="text-primary"{% endif %}>{{ partner.representativePhone|default('Non définie') }}</td>
                                 <td data-label="Actions" class="table-option">
                                     <a href="{{ path('admin_pets_show', {id: partner.id}) }}" target="_blank" class="btn-actions btn-actions-icon tooltip" alt="Afficher"><span class="icon icon-show">Afficher</span></a>
-                                    <a href="{{ path('admin_pets_edit', {id: partner.id}) }}" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
+                                    <a href="{{ path('admin_partner_edit', {id: partner.id}) }}" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
                                     <button class="open-button btn-actions tooltip" alt="Supprimer" data-modal="#dialog-{{ partner.id }}"><span class="icon icon-delete">Supprimer</span></button>
                                     {% include "components/_modal_delete.html.twig" with {id: partner.id, path: path('admin_partner_delete', {id: partner.id}), message: 'Êtes-vous sûr de supprimer ce partenaire ?', information: ''} %}
                                 </td>
