@@ -37,7 +37,7 @@
                                 <a href="{{ path('admin_pets_show', {id: pet.id}) }}" target="_blank" class="btn-actions btn-actions-icon tooltip" alt="Afficher"><span class="icon icon-show">Afficher</span></a>
                                 <a href="{{ path('admin_pets_edit', {id: pet.id}) }}" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
                                 <button class="open-button btn-actions tooltip" alt="Supprimer" data-modal="#dialog-{{ pet.id }}"><span class="icon icon-delete">Supprimer</span></button>
-                                {% include "components/_modal_delete.html.twig" with {id: pet.id, path: path('admin_pets_delete', {id: pet.id})} %}
+                                {% include "components/_modal_delete.html.twig" with {id: pet.id, path: path('admin_pets_delete', {id: pet.id}), message: 'Êtes-vous sûr de vouloir supprimer '~ pet.name, information: ''} %}
                             </td>
                         </tr>
                     {% endfor %}

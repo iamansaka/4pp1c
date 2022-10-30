@@ -34,7 +34,7 @@
                             <td data-label="Actions" class="table-option">
                                 <a href="{{ path('admin_category_edit', {id: categorie.id}) }}" class="btn-actions btn-actions-icon tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
                                 <a data-modal="#dialog-{{ categorie.id }}" class="btn-actions btn-actions-icon tooltip open-button" alt="Supprimer"><span class="icon icon-delete">Supprimer</span></a>
-                                {% include "components/_modal_delete.html.twig" with {id: categorie.id, path: path('admin_category_delete', {id: categorie.id})} %}
+                                {% include "components/_modal_delete.html.twig" with {id: categorie.id, path: path('admin_category_delete', {id: categorie.id}), message: 'Êtes-vous sûr de vouloir supprimer la catégorie '~ categorie.name ~' ?', information: 'Attention si vous supprimez cette catégorie, les articles associés à celle-ci se supprime aussi !'} %}
                             </td>
                         </tr>
                     {% endfor %}
