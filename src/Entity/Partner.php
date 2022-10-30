@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PartnerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PartnerRepository::class)]
 class Partner
@@ -15,18 +16,22 @@ class Partner
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez remplir le champs')]
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\Length(min: 5, minMessage: 'Le champs doit faire au moins plus de 5 caractères')]
+    #[Assert\NotBlank(message: 'Veuillez remplir le champs')]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $representativeName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Email(message: 'L\'email {{ value }} n\'est pas un email valide')]
     private ?string $representativeMail = null;
 
     #[ORM\Column(length: 255, nullable: true)]

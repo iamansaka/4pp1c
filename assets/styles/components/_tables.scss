@@ -109,6 +109,24 @@
     color: var(--text-white);
     background-color: var(--primary);
   }
+
+  &.person {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.756rem;
+    padding: 0.3568rem 0.756rem;
+    background-color: #cacccf;
+    .person-avatar {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+}
+.person-danger {
+  background-color: var(--danger) !important;
+  color: var(--white);
+  white-space: initial;
 }
 
 .table-actions {
