@@ -27,4 +27,10 @@ class HomeController extends AbstractController
             'testimonials' => $testimonials,
         ]);
     }
+
+    #[Route('/qui-sommes-nous', name: 'app_about', methods: ['GET'])]
+    public function aboutUs(): Response
+    {
+        return $this->render("pages/about_us.html.twig");
+    }
 }

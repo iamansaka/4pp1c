@@ -35,7 +35,7 @@
                     <a href="#" data-toggle="dropdown-toggle" role="button">L'association</a>
                     <i class='bx bx-chevron-down icon'></i>
                     <ul class="dropdown">
-                        <li class="dropdown-item"><a href="#qui-sommes-nous">Qui sommes-nous ?</a></li>
+                        <li class="dropdown-item"><a href="{{ path('app_about') }}">Qui sommes-nous ?</a></li>
                         <li class="dropdown-item"><a href="#partenaires">Les partenaires</a></li>
                         <li class="dropdown-item"><a href="{{ path('app_testimonials') }}">Les témoignages</a></li>
                     </ul>
@@ -45,7 +45,7 @@
                     <i class='bx bx-chevron-down icon'></i>
                     <ul class="dropdown">
                         <li class="dropdown-item"><a href="{{ path('app_pets') }}">A l'adoption</a></li>
-                        <li class="dropdown-item"><a href="#conditions-adoption">Les conditions d'adoption</a></li>
+                        <li class="dropdown-item"><a href="{{ path('app_cond_adoption') }}">Les conditions d'adoption</a></li>
                     </ul>
                 </li>
                 <li class="menu-item"><a href="{{ path('app_abuse') }}">Maltraitance</a></li>
