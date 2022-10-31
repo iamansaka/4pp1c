@@ -46,7 +46,7 @@
             if(r.ok === true) {
                 return r.json();
             } else {
-                throw new Erro('Impossible de contacter le serveur');
+                throw new Error('Impossible de contacter le serveur');
             }
         }
 
