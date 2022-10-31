@@ -1,0 +1,19 @@
+@use "../tools/media_queries" as *;
+
+.member-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.9rem;
+  h2 {
+    color: var(--blue-dark);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+    border-bottom: 1px solid #eceff1;
+    padding-block: 0.5rem;
+    margin-bottom: 0.785rem;
+  }
+}
+
+p {
+  font-size: 0.89rem;
+}

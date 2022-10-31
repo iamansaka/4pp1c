@@ -1,0 +1,55 @@
+{% extends 'layout/layout_admin.html.twig' %}
+
+{% block title %}Liste des adhésions - {{ parent() }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-content">
+            <h1 class="card-title">Liste des Adhésions</h1>
+            <div class="d-flex flex-fill justify-content-end mb-20">
+                <a href="{{ path('admin_membership_new') }}" class="btn btn-small btn-primary">Nouveau partenaire</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Nom Prénom</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Téléphone</th>
+                            <th scope="col">Montant</th>
+                            <th scope="col">Date de création</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for membership in memberships %}
+                            <tr>
+                                <td data-label="id">#{{ membership.id }}</td>
+                                <td data-label="Nom Prénom">{{ membership.lastname ~' '~ membership.firstname }}</td>
+                                <td data-label="Email" {% if membership.mail is empty %}class="text-primary"{% endif %}>{{ membership.mail|default('Non définie') }}</td>
+                                <td data-label="Téléphone" {% if membership.phone is empty %}class="text-primary"{% endif %}>{{ membership.phone|default('Non définie') }}</td>
+                                <td data-label="Montant" {% if membership.amount is empty %}class="text-primary"{% endif %}>{{ membership.amount|default('Non définie') }}</td>
+                                <td data-label="Date de création">{{ membership.createdAt|ago(locale='fr') }}</td>
+                                <td data-label="Actions" class="table-option">
+                                    <a href="{{ path('admin_membership_show', {id: membership.id}) }}" class="btn-actions btn-actions-icon tooltip" alt="Afficher"><span class="icon icon-show">Afficher</span></a>
+                                    <a href="{{ path('admin_membership_edit', {id: membership.id}) }}" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
+                                    <button class="open-button btn-actions tooltip" alt="Supprimer" data-modal="#dialog-{{ membership.id }}"><span class="icon icon-delete">Supprimer</span></button>
+                                    {% include "components/_modal_delete.html.twig" with {id: membership.id, path: path('admin_membership_delete', {id: membership.id}), message: 'Êtes-vous sûr de supprimer le membre '~  membership.lastname ~' '~ membership.firstname ~' ?', information: ''} %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-row-wrap mt-20">
+                <div class="table-status">Affiche {{ memberships.paginatorOptions.defaultLimit }} sur {{ memberships.getTotalItemCount }} entrées</div>
+                <div class="navigation">
+                    {{ knp_pagination_render(memberships) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

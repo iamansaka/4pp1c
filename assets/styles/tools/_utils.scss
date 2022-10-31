@@ -255,6 +255,14 @@
 // Largeur
 // =========================================
 .w {
+  &-25 {
+    max-width: 25%;
+    width: 100%;
+    @include sm {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
   &-4 {
     max-width: 40%;
     width: 100%;
@@ -291,5 +299,16 @@
   }
   &-10 {
     gap: 10px;
+  }
+  &-20 {
+    gap: 20px;
+  }
+  &-30 {
+    gap: 30px;
+  }
+  &-xs-10 {
+    @include sm {
+      gap: 10px;
+    }
   }
 }

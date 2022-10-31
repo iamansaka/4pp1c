@@ -1,0 +1,20 @@
+{% extends "layout/layout_admin.html.twig" %}
+
+{% block title %}Ajouter une nouvelle adhésion - {{ parent() }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-content">
+            <h1 class="card-title mb-20">Ajouter une adhésion </h1>
+            {{ form_start(form) }}
+                {{ form_rest(form) }}
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-small mr-10 {{ app.request.attributes.get('_route') == "admin_membership_new" ? 'btn-primary' : 'btn-blue' }}">{{ app.request.attributes.get('_route') == "admin_membership_new" ? 'Ajouter le membre' : 'Modifier le membre' }}</button>
+                    <a href="{{ path('admin_membership') }}" class="btn btn-small btn-border">Retour</a>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
