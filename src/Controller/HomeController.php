@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Partner;
 use App\Repository\ArticleRepository;
+use App\Repository\PartnerRepository;
 use App\Repository\PetsRepository;
 use App\Repository\TestimonialsRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,9 +30,14 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/qui-sommes-nous', name: 'app_about', methods: ['GET'])]
-    public function aboutUs(): Response
+
+    #[Route('/partenaires', name: 'app_partner', methods: ['GET'])]
+    public function partners(PartnerRepository $partnerRepo): Response
     {
-        return $this->render("pages/about_us.html.twig");
+        $partners = $partnerRepo->findAllPagination();
+
+        return $this->render('pages/partner.html.twig', [
+            'partners' => $partners
+        ]);
     }
 }

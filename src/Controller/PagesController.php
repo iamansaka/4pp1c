@@ -31,4 +31,10 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/conditions_adoption.html.twig');
     }
+
+    #[Route('/qui-sommes-nous', name: 'app_about', methods: ['GET'])]
+    public function aboutUs(): Response
+    {
+        return $this->render("pages/about_us.html.twig");
+    }
 }
