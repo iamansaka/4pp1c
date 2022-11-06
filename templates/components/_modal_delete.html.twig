@@ -12,7 +12,8 @@
                 </button>
             </header> #}
             <article class="modal-body">
-                <p>Êtes-vous sûr de vouloir supprimer cet article {{ id }} ?</p>
+                <p>{{ message }}</p>
+                {% if information|length %}<small class="text-small text-danger">{{ information }}</small>{% endif %}
             </article>
             <footer class="modal-footer">
                 <button class="modal-btn rounded-5" type="reset" data-dismiss="dialog" autofocus>Annuler</button>

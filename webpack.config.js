@@ -22,11 +22,13 @@ Encore
    */
   .addEntry("app", "./assets/app.js")
   .addEntry("admin", "./assets/admin.js")
+  .addEntry("dashboard", "./assets/scripts/pages/dashboard.js")
   .addEntry("home", "./assets/scripts/pages/homepage.js")
   .addEntry("testimonials", "./assets/scripts/pages/testimonials.js")
   .addEntry("articles", "./assets/scripts/pages/articles.js")
   .addEntry("adoption", "./assets/scripts/pages/adoption.js")
   .addStyleEntry("profilePets", "./assets/styles/pages/pet_show.scss")
+  .addStyleEntry("membership", "./assets/styles/pages/membership.scss")
   // .addEntry("home", "./assets/scripts/pages/homepage.js")
   // .addEntry("articles", "./assets/scripts/pages/articles.js")
   // .addStyleEntry("home", "./assets/styles/pages/home.scss")
@@ -74,12 +76,13 @@ Encore
 
   // enables Sass/SCSS support
   .enableSassLoader();
+// .enableVueLoader();
 
 // uncomment if you use TypeScript
 //.enableTypeScriptLoader()
 
 // uncomment if you use React
-//.enableReactPreset()
+// .enableReactPreset();
 
 // uncomment to get integrity="..." attributes on your script & link tags
 // requires WebpackEncoreBundle 1.4 or higher

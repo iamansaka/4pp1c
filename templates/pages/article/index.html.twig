@@ -12,9 +12,10 @@
         <div class="d-flex flex-column justify-content-center w-5 m-auto text-center mb-50">
             <h1 class="heading-title">Actualités</h1>
             <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus ultrices vestibulum praesent. Ut turpis eget dictum in mauris amet.</p>
-            <div class="article-search d-flex align-items-center flex-fill">
+            <div id="search-article" class="article-search d-flex align-items-center flex-fill">
                 <i class="fa-solid fa-magnifying-glass mr-5"></i>
-                <input type="text" class="flex-fill" name="search" placeholder="Rechercher un article...">
+                <input type="text" data-search-article class="flex-fill input-search" name="search" placeholder="Rechercher un article...">
+                <ul class="search-result d-flex flex-column" data-articles-list></ul>
             </div>
         </div>
         {% if not articles.items is same as([]) %}
@@ -29,7 +30,43 @@
                 </div>
             </div>
         {% else %}
-            <h4>Il n'y a pas d'articles</h4>
+            <h4>Il n'y a pas d'articles pour le môment</h4>
         {% endif %}
     </div>
+{% endblock %}
+
+{% block javascripts_footer %}
+    {{parent()}}
+    <script>
+        const searchInput = document.querySelector("[data-search-article]");
+        const articles = document.querySelector("[data-articles-list]");
+        let timeout = null;
+
+        searchInput.addEventListener("keyup", function (event) {
+        clearTimeout(timeout);
+        timeout = setTimeout(async () => {
+            let value = event.target.value;
+            let data = null;
+            if (value?.length) {
+                try {
+                    const response = await fetch(`/ajax/actualites/search/${value}`);
+                    const body = await response.json();
+                    data = JSON.parse(body);
+                    data.forEach((el) => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<a>${el.title}<a>`;
+                    articles.append(li);
+                    });
+                    articles.classList.add("active");
+                } catch (e) {
+                    data = null;
+                    articles.classList.remove("active");
+                }
+            } else {
+                data = null;
+                articles.classList.remove("active");
+            }
+        }, 1000);
+        });
+    </script>
 {% endblock %}

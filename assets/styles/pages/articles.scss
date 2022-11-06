@@ -1,6 +1,7 @@
 // Pages Actualités
 //// ====================================
 .article-search {
+  position: relative;
   background-color: #d9e5fc;
   padding: 1.125rem;
   color: var(--dark);
@@ -11,6 +12,30 @@
     &::placeholder {
       opacity: 0.7;
     }
+  }
+}
+
+.search-result {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: start;
+  padding: 10px;
+  width: 100%;
+  z-index: 10;
+  > * {
+    cursor: pointer;
+    padding: 8px;
+    &:hover {
+      color: var(--primary);
+    }
+  }
+  &.active {
+    display: block;
   }
 }
 

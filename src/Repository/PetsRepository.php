@@ -52,13 +52,22 @@ class PetsRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function findAllAdmin()
+    public function findAllAdmin(): array
     {
         return $this->createQueryBuilder('q')
             ->orderBy('q.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
     }
+
+    public function selectPetsCount(): array
+    {
+        return $this->createQueryBuilder('q')
+            ->select('count(q.id)')
+            ->getQuery()
+            ->getResult();
+    }
+
 
     //    /**
     //     * @return Pets[] Returns an array of Pets objects

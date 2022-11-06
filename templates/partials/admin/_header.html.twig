@@ -10,8 +10,9 @@
                     <input type="text" name="search" placeholder="Rechercher n'importe quoi...">
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
-                    <div class="logout mr-5"><i class="fa-solid fa-arrow-right-from-bracket mr-10"></i></i>Déconnexion</div>
-                    <a href="{{ path('app_home') }}" class="back-website tooltip" alt="Revenir sur le site">Revenir sur le site</a>
+                    <div class="icon-menu menu-burger"><img src="{{ asset('build/images/icon/menu-outline.svg') }}" alt="menu burger"><span>Afficher le menu</span></div>
+                    <a href="{{ path('app_home') }}" class="icon-menu back-website"><img src="{{ asset('build/images/icon/storefront-outline.svg') }}" alt="Revenir sur le site"><span>Revenir sur le site</span></a>
+                    <div class="icon-menu logout"><img src="{{ asset('build/images/icon/exit.svg') }}" alt="menu burger"><span>Déconnexion</span></div>
                 </div>
             </div>
         </div>
@@ -56,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ path('admin_membership') }}">
                         <i class='bx bx-user-pin nav-icon'></i>
                         <span>Membership</span>
                     </a>

@@ -1,0 +1,64 @@
+{% extends "layout/layout_admin.html.twig" %}
+
+{% block title %}Aperçu - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('membership') }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-content">
+            <div class="member-group">
+                <h2>Informations personnelles</h2>
+                <div class="d-flex flex-column">
+                    <div class="w-25 mb-20">
+                        <img src="{{ asset('build/images/default.png') }}" alt="{{ membership.lastname }}">
+                    </div>
+                    <div class="d-flex flex-row-wrap gap-20 gap-xs-10 mb-20">
+                        <div class="d-flex flex-column">
+                            <div class="member-label">Nom</div>
+                            <p>{{ membership.lastname }}</p>
+                        </div>
+                         <div class="d-flex flex-column">
+                            <div class="member-label">Prénom</div>
+                            <p>{{ membership.firstname }}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column mb-20">
+                        <div class="member-label">Sexe</div>
+                        <p>{{ membership.gender ? 'Homme' : 'Femme' }}</p>
+                    </div>
+                    <div class="d-flex flex-column mb-20">
+                        <div class="member-label">Age</div>
+                        <p>{{ membership.age ? membership.age ~' ans' : 'Non définie pour le môment' }}</p>
+                    </div>
+                    <div class="d-flex flex-column mb-20">
+                        <div class="member-label">Adresse</div>
+                        <p>{{ membership.adress ~', '~ membership.city ~', '~ membership.zipCode }}</p>
+                    </div>
+                    <div class="d-flex flex-column mb-20">
+                        <div class="member-label">Téléphone</div>
+                        <p>{{ membership.phone|default('Non définie pour le pour le moment') }}</p>
+                    </div>
+                    <div class="d-flex flex-column mb-20">
+                        <div class="member-label">Email</div>
+                        <p><a {% if membership.mail is not empty %}href="mailto:{{ membership.mail|lower }}"{% endif %}>{{ membership.mail|lower|default('Non définie pour le pour le moment') }}</a></p>
+                    </div>
+                    <h2>Adhésions</h2>
+                    <div class="d-flex flex-column mb-20">
+                        <div class="member-label">Montant adhésions</div>
+                        <p {% if membership.amount is empty %}class="text-primary"{% endif %}>{{ membership.amount|default('Non définie pour le pour le moment') }}</p>
+                    </div>
+                    <div class="d-flex align-items-center gap-10">
+                        <a href="{{ path('admin_membership') }}"n class="btn btn-small btn-blue">Modifier</a>
+                        <a href="{{ path('admin_membership') }}" class="btn btn-bold btn-small">Retour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,5 +1,8 @@
 .table-responsive {
   width: 100%;
+  @include md {
+    overflow-x: auto;
+  }
   @include sm {
     overflow-x: auto;
     .table {
@@ -55,6 +58,12 @@
   }
 }
 
+.dashboard .table thead {
+  background: #f8fafc;
+  border: 1px solid #eff0f4;
+  border-radius: 8px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -71,6 +80,9 @@
     padding: 0.687rem 0.937rem;
     text-transform: uppercase;
     letter-spacing: 0.031rem;
+    @include md {
+      white-space: nowrap;
+    }
   }
 
   td {
@@ -79,6 +91,12 @@
       width: 70px;
       height: 45px;
       border-radius: 5px;
+    }
+    @include md {
+      &.table-option[data-label="Actions"] {
+        display: flex;
+        // flex-direction: column !important;
+      }
     }
   }
 
