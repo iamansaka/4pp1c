@@ -5,6 +5,17 @@
   background-color: var(--white);
   box-shadow: 0px 10px 10px rgb(28 39 60 / 3%);
 }
+.navbar-bottom {
+  @include sm {
+    display: none;
+  }
+  @include md {
+    display: none;
+  }
+  &.menu-open {
+    display: block;
+  }
+}
 
 .navbar-top {
   padding: 10px 0;
@@ -41,12 +52,46 @@
   vertical-align: middle;
 }
 
+.icon-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: auto;
+  background: #f1f5f9;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+  > span {
+    font-size: 0;
+    text-indent: -3000px;
+  }
+  img {
+    width: 100%;
+    object-fit: contain;
+    vertical-align: middle;
+  }
+  @include lg {
+    &.menu-burger {
+      display: none;
+    }
+  }
+}
+
 .nav-list-navigation {
   width: 100%;
   display: flex;
   @include sm {
     flex-direction: column;
-    display: none;
+  }
+  @include md {
+    flex-direction: column;
   }
 
   .nav-item {

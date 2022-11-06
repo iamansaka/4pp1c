@@ -22,6 +22,7 @@ Encore
    */
   .addEntry("app", "./assets/app.js")
   .addEntry("admin", "./assets/admin.js")
+  .addEntry("dashboard", "./assets/scripts/pages/dashboard.js")
   .addEntry("home", "./assets/scripts/pages/homepage.js")
   .addEntry("testimonials", "./assets/scripts/pages/testimonials.js")
   .addEntry("articles", "./assets/scripts/pages/articles.js")

@@ -1,20 +1,101 @@
 {% extends 'layout/layout_admin.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Dashboard - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('dashboard') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dashboard') }}
+{% endblock %}
 
 {% block content %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/Web/projets/symfony/4pattesdespoilset1coeur/src/Controller/Admin/DefaultController.php'|file_link(0) }}">src/Controller/Admin/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/Web/projets/symfony/4pattesdespoilset1coeur/templates/admin/default/index.html.twig'|file_link(0) }}">templates/admin/default/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="d-flex align-items justify-content-end gap-10 mb-20 sm-flex-column">
+        <div class="dashbord-time">
+            <img src="{{ asset('build/images/icon/calendar.svg') }}" alt="Icon calendrier">
+            <span class="date"></span>
+            <span class="heures"></span>
+        </div>
+        <a href="{{ path('admin_pets_new') }}" class="btn btn-small btn-blue rounded-5">Ajouter un chat(on)</a>
+    </div>
+    <div class="dashboard-body">
+        <div class="dasboard-left">
+            <div class="dash-stats-list mb-20">
+                <div class="dashboard-stats-item">
+                    <img src="{{ asset('build/images/journal.png') }}" alt="articles">
+                    <strong>{{ stats['articles'] }}</strong>
+                    <p>Articles</p>
+                </div>
+                <div class="dashboard-stats-item">
+                    <img src="{{ asset('build/images/chat.png') }}" alt="chats">
+                    <strong>{{ stats['pets'] }}</strong>
+                    <p>Loulous</p>
+                </div>
+                <div class="dashboard-stats-item">
+                    <img src="{{ asset('build/images/equipe.png') }}" alt="membres">
+                    <strong>{{ stats['members'] }}</strong>
+                    <p>Adhésions</p>
+                </div>
+            </div>
+            <div class="dash-pets">
+                <div class="card-dashboard">
+                    <div class="card-content">
+                        <h3 class="card-title">Nos 5 derniers loulous</h3>
+                        <div class="table-responsive dashboard">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Thumbnail</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">N°Registre</th>
+                                        <th scope="col">Date de création</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for pet in pets %}    
+                                    <tr>
+                                        <td data-label="Thumbnail"><img src="{{ pet.picture ? pet.picture : asset(imageBasic) }}" alt="{{ pet.name }}"></td>
+                                        <td data-label="Nom">{{ pet.name }}</td>
+                                        <td data-label="N°Registre"><span class="registry {{ pet.registryNumber ?? 'no-registry' }}">{{ pet.registryNumber ? pet.registryNumber : 'Pas de registre' }}</span></td>
+                                        <td data-label="Date de création">{{ pet.createdAt|ago(locale='fr') }}</td>
+                                        <td data-label="Actions" class="table-option">
+                                            <a href="{{ path('admin_pets_show', {id: pet.id}) }}" class="btn-actions btn-actions-icon tooltip" alt="Afficher"><span class="icon icon-show">Afficher</span></a>
+                                            <a href="{{ path('admin_pets_edit', {id: pet.id}) }}" class="btn-actions tooltip" alt="Modifier"><span class="icon icon-edit">Modifier</span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-right">
+            <div class="dash-member">
+                <div class="card-dashboard">
+                    <div class="card-content">
+                        <h3 class="card-title">Nos 5 derniers membres</h3>
+                        <div class="member-list">
+                            {% for member in members %}
+                                <div class="member-item">
+                                    <div class="member-thumb">
+                                        <img src="{{ asset('build/images/default.png') }}" alt="{{ member.lastname ~'-'~ member.firstname }}">
+                                    </div>
+                                    <div class="member-meta">
+                                        <p class="member-name">{{ member.lastname ~' '~ member.firstname }}</p>
+                                        <a href="mailto:{{ member.mail }}" class="member-email">{{ member.mail }}</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

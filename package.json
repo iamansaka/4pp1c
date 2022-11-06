@@ -23,6 +23,7 @@
     "build": "encore production --progress"
   },
   "dependencies": {
+    "moment": "^2.29.4",
     "swiper": "^8.4.2",
     "vue": "^3.2.36",
     "vue-loader": "^17.0.0"

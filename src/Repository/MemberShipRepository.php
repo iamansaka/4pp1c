@@ -48,6 +48,23 @@ class MemberShipRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getFiveTheLast(): array
+    {
+        return $this->createQueryBuilder('q')
+            ->orderBy('q.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function selectMemberCount(): array
+    {
+        return $this->createQueryBuilder('q')
+            ->select('count(q.id)')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return MemberShip[] Returns an array of MemberShip objects
     //     */

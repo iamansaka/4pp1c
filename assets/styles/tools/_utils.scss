@@ -217,6 +217,11 @@
 .flex-column {
   flex-direction: column;
 }
+.sm-flex-column {
+  @include sm {
+    flex-direction: column;
+  }
+}
 
 .align-items-center {
   align-items: center;

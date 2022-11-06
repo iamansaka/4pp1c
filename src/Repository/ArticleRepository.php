@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -63,6 +64,14 @@ class ArticleRepository extends ServiceEntityRepository
             ->select('q.title, q.slug')
             ->where('q.title LIKE :search')
             ->setParameter('search', "%{$query}%")
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function selectArticleCount(): array
+    {
+        return $this->createQueryBuilder('q')
+            ->select('count(q.id)')
             ->getQuery()
             ->getResult();
     }
