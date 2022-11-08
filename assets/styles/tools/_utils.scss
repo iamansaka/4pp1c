@@ -61,6 +61,12 @@
       margin-bottom: calc(50px / 2);
     }
   }
+  &-100 {
+    margin-bottom: 100px;
+    @include sm {
+      margin-bottom: calc(100px / 2);
+    }
+  }
 }
 
 .mr {
@@ -105,6 +111,14 @@
     @include sm {
       margin-top: calc(50px / 2);
       margin-bottom: calc(50px / 2);
+    }
+  }
+  &-100 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    @include sm {
+      margin-top: calc(100px / 2);
+      margin-bottom: calc(100px / 2);
     }
   }
 }

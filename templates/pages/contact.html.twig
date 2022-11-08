@@ -1,0 +1,30 @@
+{% extends "layout/layout_base.html.twig" %}
+
+{% block title %}Contact - {{ parent() }}{% endblock %}
+
+{% block content %}
+<div class="container mt-50 mb-100">
+    <div class="w-5 mb-20">
+        <h1 class="text-primary">Nous contacter</h1>
+        <p class="heading-text mt-10">Pour toute question, remarque ou commentaire, vous pouvez utiliser le formulaire ci-dessous. Nous vous répondrons dans les plus brefs délais.</p>
+    </div>
+    <div id="form-contact">
+        {{ form_start(form) }}
+            <div class="form-row">
+                {{ form_row(form.fullname) }}
+                {{ form_row(form.mail) }}
+            </div>
+            <div class="form-row">
+                {{ form_row(form.phone) }}
+                {{ form_row(form.subjet) }}
+            </div>
+            {{ form_row(form.message) }}
+            <div class="d-flex flex-row align-items-center gap-5 ">
+                {{ form_widget(form.copy) }}
+                <label for="{{ form.copy.vars.id }}" class="text-w-regular">Je souhaite recevoir une copie de ce message par e-mail</label>
+            </div>
+            <button class="btn btn-primary rounded-10 mt-20">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+</div> 
+{% endblock %}
