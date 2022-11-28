@@ -37,4 +37,8 @@
   &-gray {
     color: var(--blue-dark);
   }
+
+  &-w-regular {
+    font-weight: var(--font-weight-regular) !important;
+  }
 }

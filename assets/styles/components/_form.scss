@@ -258,24 +258,24 @@ textarea.form-field {
     padding-block: 0.5rem;
     margin-bottom: 1rem;
   }
-  .form-row {
-    display: flex;
-    flex-flow: row wrap;
-    column-gap: 1.5rem;
-    > .form-element {
-      flex: 1 1 calc(50% - 1.5rem);
-      @include sm {
-        flex: 1 1 100%;
-      }
+}
+.form-row {
+  display: flex;
+  flex-flow: row wrap;
+  column-gap: 1.5rem;
+  > .form-element {
+    flex: 1 1 calc(50% - 1.5rem);
+    @include sm {
+      flex: 1 1 100%;
     }
   }
-  .form-meta {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 1rem;
-    .form-element label {
-      order: 2;
-    }
+}
+.form-meta {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  .form-element label {
+    order: 2;
   }
 }
 
@@ -309,5 +309,26 @@ textarea.form-field {
   }
   &.label-hidden label:first-child {
     display: none;
+  }
+}
+
+#form-contact {
+  label {
+    color: var(--blue-dark);
+    font-weight: var(--font-weight-semi-bold);
+  }
+  .form-element label::after {
+    content: "*";
+    color: var(--primary);
+    margin-left: 3px;
+  }
+  .form-field {
+    background-color: #eff7ff;
+    border: 1px solid #dbedff;
+
+    &:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0.25rem 0.05rem rgb(105 108 255 / 10%);
+    }
   }
 }
