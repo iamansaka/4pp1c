@@ -25,8 +25,6 @@ class PetsController extends AbstractController
             10
         );
 
-        dump($pets);
-
         return $this->render('pages/admin/pets/index.html.twig', [
             'pets' => $pets,
         ]);
@@ -82,8 +80,6 @@ class PetsController extends AbstractController
         if (!$pet) {
             return throw $this->createNotFoundException('Le chat(on) que tu cherches n\'est pas ou plus disponible.');
         }
-
-        dump($pet);
 
         return $this->render('pages/admin/pets/show.html.twig', [
             'pet' => $pet
