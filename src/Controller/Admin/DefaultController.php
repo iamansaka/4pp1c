@@ -2,16 +2,18 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\PetsRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\MemberShipRepository;
-use App\Repository\PetsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DefaultController extends AbstractController
 {
     #[Route('/admin/dashboard', name: 'admin_dashboard')]
+    #[IsGranted('ROLE_USER')]
     public function index(PetsRepository $petsRepo, MemberShipRepository $memberShipRepo, ArticleRepository $articleRepo,): Response
     {
         $pets = $petsRepo->findTheLast(5);
