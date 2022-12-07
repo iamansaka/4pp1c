@@ -4,18 +4,20 @@ namespace App\Controller\Admin;
 
 use App\Entity\Partner;
 use App\Form\PartnerType;
-use App\Repository\PartnerRepository;
 use App\Service\FileUploader;
+use App\Repository\PartnerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PartnerController extends AbstractController
 {
     #[Route('/admin/partner', name: 'admin_partner', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(PartnerRepository $partnerRepo, Request $request, PaginatorInterface $paginator): Response
     {
 
@@ -32,6 +34,7 @@ class PartnerController extends AbstractController
 
     #[Route('/admin/partner/nouveau', name: 'admin_partner_new', methods: ['GET', 'POST'])]
     #[Route('/admin/partner/edition/{id}', name: 'admin_partner_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function formPartner(?Partner $partner, Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $edit = $partner ? true : false;
@@ -73,6 +76,7 @@ class PartnerController extends AbstractController
     }
 
     #[Route('admin/partner/suppresion/{id}', name: 'admin_partner_delete', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function delete(Partner $partner, EntityManagerInterface $em): Response
     {
         $em->remove($partner);

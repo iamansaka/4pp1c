@@ -9,6 +9,7 @@ use App\Service\FileUploader;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     #[Route('/admin/article', name: 'admin_article', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(Request $request, PaginatorInterface $paginator, ArticleRepository $articleRepository): Response
     {
         $requestArticle = $request->query->get('q');
@@ -43,6 +45,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/admin/article/nouveau', name: 'admin_article_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $article = new Article();
@@ -68,6 +71,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/admin/article/edition/{id}', name: 'admin_article_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function edit(Request $request, Article $article, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $articleForm = $this->createForm(ArticleType::class, $article);
@@ -93,6 +97,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('admin/article/suppression/{id}', name: 'admin_article_delete', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function delete(Article $article, EntityManagerInterface $em): Response
     {
         if (!$article) {

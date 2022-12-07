@@ -27,8 +27,6 @@ class HomeController extends AbstractController
         $articles = $articleRepo->findTheLastThree();
         $testimonials = $testimonialsRepo->findTheLastNine();
 
-        dump($pets);
-
         return $this->render('pages/home.html.twig', [
             'pets' => $pets,
             'articles' => $articles,
@@ -54,13 +52,13 @@ class HomeController extends AbstractController
         $contactForm = $this->createForm(ContactType::class, $contact);
         $contactForm->handleRequest($request);
 
-        // $email = new Email();
-        // $email->from('Ansaka <contact@ansaka.fr>')
-        //     ->to('admin@4pp1c.com')
-        //     ->subject('Bienvenue sur 4 pattes des poils et 1 coeur')
-        //     ->html('<p>See Twig integration for better HTML integration!</p>');
-
-        // $mailer->send($email);
+        $email = new Email();
+        $email->from('Ansaka <contact@ansaka.fr>')
+            ->to('admin@4pp1c.com')
+            ->subject('Bienvenue sur 4 pattes des poils et 1 coeur')
+            ->html('<p>See Twig integration for better HTML integration!</p>');
+        // dd($email);
+        $mailer->send($email);
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $contact = $contactForm->getData();
@@ -68,7 +66,7 @@ class HomeController extends AbstractController
 
 
             // $this->addFlash('success', 'Votre demande a bien été envoyé avec succès');
-            // return $this->redirectToRoute('app_contact');
+            return $this->redirectToRoute('app_contact');
         }
 
         return $this->render('pages/contact.html.twig', [

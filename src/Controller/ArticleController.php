@@ -10,6 +10,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
@@ -41,6 +42,14 @@ class ArticleController extends AbstractController
     }
 
 
+    /**
+     * This controller display show article
+     *
+     * @param [type] $slug
+     * @param ArticleRepository $articleRepo
+     * @param CacheInterface $cache
+     * @return Response
+     */
     #[Route('/actualites/{slug}', name: 'app_article_show', methods: 'GET', requirements: ['slug' => '^[a-z0-9]+(?:-[a-z0-9]+)*$'])]
     public function show($slug, ArticleRepository $articleRepo, CacheInterface $cache): Response
     {
@@ -60,8 +69,15 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    /**
+     * This controller display all articles json
+     *
+     * @param string $search
+     * @param ArticleRepository $articleRepository
+     * @return JsonResponse
+     */
     #[Route('/ajax/actualites/search/{search}', name: 'app_article_search')]
-    public function articleSearch(string $search, ArticleRepository $articleRepository)
+    public function articleSearch(string $search, ArticleRepository $articleRepository): JsonResponse
     {
         $article = $articleRepository->findBySearch($search);
         return $this->json(json_encode($article));

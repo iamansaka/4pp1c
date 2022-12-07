@@ -8,9 +8,6 @@
     {% if partners is not empty %}
         <div class="partners-list mb-50">
             {% for partner in partners %}
-            <pre>
-                {{ dump(partner) }}
-            </pre>
             <div class="card-partner" style="background-image: url('{{ partner.picture ? partner.picture : asset(imageBasic) }}')">
                 <div class="card-partner-body">
                     <h3>{{ partner.name }}</h3>

@@ -6,15 +6,17 @@ use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CategoryController extends AbstractController
 {
     #[Route('/admin/category', name: 'admin_category', methods: ['GET', 'POST'])]
     #[Route('/admin/category/edition/{id}', name: 'admin_category_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function index(Request $request, CategoryRepository $categoryRepo, EntityManagerInterface $em, ?Category $categorie): Response
     {
         $edit = $categorie ? true : false;
@@ -49,6 +51,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/admin/category/suppression/{id}', name: 'admin_category_delete', methods: ['DELETE', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function delete(Category $id, EntityManagerInterface $em): Response
     {
         if (!$id) {
